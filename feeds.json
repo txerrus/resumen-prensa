@@ -1,9 +1,10 @@
 {
-  "_comentario": "Fuentes por sección (pistas: Claude reagrupa y puede recolocar). Local está puesto a Madrid como ejemplo; cambia los feeds por los de tu ciudad/comunidad.",
+  "_comentario": "Fuentes por sección (pistas: Claude reagrupa y puede recolocar). Local está puesto a Madrid como ejemplo. Añade/quita {medio,url} libremente. Nota: algunos medios (El Periódico, La Razón, EFE, Cinco Días, elEconomista, Público, Agencia SINC, Muy Interesante, OKDiario, laSexta, Telemadrid) bloquean el acceso por RSS o no lo ofrecen y por eso no están.",
   "secciones": {
     "Nacional / España": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml" },
+      { "medio": "El Español", "url": "https://www.elespanol.com/rss/espana/" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/politica.xml" },
       { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/politica/" },
       { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/espana/" },
@@ -17,7 +18,8 @@
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/internacional.xml" },
       { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/internacional/" },
-      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/internacional/" }
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/internacional/" },
+      { "medio": "El Orden Mundial", "url": "https://elordenmundial.com/feed/" }
     ],
     "Local / Madrid": [
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/madrid.xml" },
@@ -26,6 +28,7 @@
     "Economía": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/economia.xml" },
+      { "medio": "Expansión", "url": "https://e00-expansion.uecdn.es/rss/economia.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/economia.xml" },
       { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/economia/" },
       { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/economia/" },
@@ -43,6 +46,9 @@
       { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/opinion/" }
     ],
     "Deportes": [
+      { "medio": "Marca", "url": "https://e00-marca.uecdn.es/rss/portada.xml" },
+      { "medio": "Mundo Deportivo", "url": "https://www.mundodeportivo.com/rss/home.xml" },
+      { "medio": "Relevo", "url": "https://www.relevo.com/rss/" },
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/deportes.xml" },
@@ -51,7 +57,9 @@
     "Cultura": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/cultura/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/cultura.xml" },
-      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/cultura.xml" }
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/cultura.xml" },
+      { "medio": "Fotogramas", "url": "https://www.fotogramas.es/rss/all.xml" },
+      { "medio": "Jot Down", "url": "https://www.jotdown.es/feed/" }
     ],
     "Ciencia": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/ciencia/portada" },
@@ -60,16 +68,20 @@
       { "medio": "20minutos", "url": "https://www.20minutos.es/rss/ciencia/" }
     ],
     "Tecnología": [
+      { "medio": "Xataka", "url": "https://www.xataka.com/feedburner.xml" },
+      { "medio": "Genbeta", "url": "https://www.genbeta.com/feedburner.xml" },
+      { "medio": "Hipertextual", "url": "https://hipertextual.com/feed" },
+      { "medio": "Computer Hoy", "url": "https://computerhoy.20minutos.es/rss" },
+      { "medio": "Omicrono", "url": "https://www.elespanol.com/rss/omicrono/" },
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/tecnologia/portada" },
-      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/tecnologia.xml" },
-      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/tecnologia/" },
-      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/tecnologia/" }
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/tecnologia.xml" }
     ],
     "Salud": [
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundosalud/rss/portada.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/vida/salud.xml" },
       { "medio": "20minutos", "url": "https://www.20minutos.es/rss/salud/" },
-      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/sociedad/salud/" }
+      { "medio": "Redacción Médica", "url": "https://www.redaccionmedica.com/rss" },
+      { "medio": "Consalud", "url": "https://www.consalud.es/rss" }
     ]
   }
 }
