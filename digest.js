@@ -19,10 +19,13 @@ const SOLO_POOL = args.includes("--pool") || args.includes("--solo-feeds");
 const SIN_CORREO = args.includes("--sin-correo");
 
 const HORAS_VENTANA = 28;   // noticias de las últimas N horas
-const TOP_POR_FEED = 10;    // artículos máximos por feed
-const MAX_POR_SECCION = 55; // tope por sección (asegura que todas aparecen)
-const MAX_ARTICULOS = 320;  // tope global que se manda a Claude
-const SECCIONES = ["Política", "Economía", "Internacional", "Sociedad", "Deportes", "Cultura", "Otras"];
+const TOP_POR_FEED = 6;     // artículos máximos por feed (menos por feed = más diversidad de medios)
+const MAX_POR_SECCION = 40; // tope por sección (asegura que todas aparecen)
+const MAX_ARTICULOS = 280;  // tope global que se manda a Claude
+const SECCIONES = [
+  "Nacional / España", "Internacional / Mundo", "Local / Madrid", "Economía", "Sociedad",
+  "Deportes", "Cultura", "Ciencia", "Tecnología", "Salud", "Otras"
+];
 
 const parser = new Parser({ timeout: 15000, headers: { "User-Agent": "Mozilla/5.0 ResumenPrensa/0.2" } });
 const log = (...a) => console.log(...a);
@@ -90,6 +93,10 @@ medios, numerados [id], con su medio y una sección orientativa.
 Tareas:
 1. AGRUPA en NOTICIAS: junta los artículos de distintos medios que tratan el MISMO hecho.
 2. Clasifica cada noticia en una de estas secciones: ${SECCIONES.join(", ")}.
+   Guía: "Nacional / España" = política y actualidad del país; "Local / Madrid" = sucesos y
+   actualidad de esa ciudad/comunidad; "Sociedad" = educación, medio ambiente, sucesos, tribunales;
+   "Salud" = sanidad y medicina; "Ciencia" = investigación y espacio; "Tecnología" = empresas tech,
+   IA, gadgets. Usa "Otras" solo si no encaja en ninguna.
 3. Para cada noticia da: un "titular" propio, breve y neutro; un "resumen" de 1-2 frases basado
    SOLO en los titulares (no inventes datos ni cifras que no aparezcan); "importancia" de 1 a 5
    (5 = lo más importante del día); y "fuente_ids": la lista de ids de los artículos que la forman.

@@ -1,7 +1,7 @@
 {
-  "_comentario": "Fuentes por sección. Son PISTAS: Claude reagrupa cada noticia y puede recolocar la sección. Añade o quita libremente {medio, url}.",
+  "_comentario": "Fuentes por sección (pistas: Claude reagrupa y puede recolocar). Local está puesto a Madrid como ejemplo; cambia los feeds por los de tu ciudad/comunidad.",
   "secciones": {
-    "Política": [
+    "Nacional / España": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/politica.xml" },
@@ -12,6 +12,17 @@
       { "medio": "El Confidencial", "url": "https://rss.elconfidencial.com/espana/" },
       { "medio": "RTVE", "url": "https://api.rtve.es/rss/temas_noticias.xml" }
     ],
+    "Internacional / Mundo": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/internacional.xml" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/internacional/" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/internacional/" }
+    ],
+    "Local / Madrid": [
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/madrid.xml" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/madrid/" }
+    ],
     "Economía": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/economia.xml" },
@@ -19,13 +30,6 @@
       { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/economia/" },
       { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/economia/" },
       { "medio": "20minutos", "url": "https://www.20minutos.es/rss/economia/" }
-    ],
-    "Internacional": [
-      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada" },
-      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml" },
-      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/internacional.xml" },
-      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/internacional/" },
-      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/internacional/" }
     ],
     "Sociedad": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/sociedad/portada" },
@@ -41,6 +45,24 @@
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/cultura/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/cultura.xml" },
       { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/cultura.xml" }
+    ],
+    "Ciencia": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/ciencia/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/ciencia.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/ciencia.xml" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/ciencia/" }
+    ],
+    "Tecnología": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/tecnologia/portada" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/tecnologia.xml" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/tecnologia/" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/tecnologia/" }
+    ],
+    "Salud": [
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundosalud/rss/portada.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/vida/salud.xml" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/salud/" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/sociedad/salud/" }
     ]
   }
 }

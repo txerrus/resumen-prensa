@@ -67,13 +67,15 @@
   <div class="card">
     <div class="row">
       <div>
+        <label>Sección</label>
+        <select id="seccionSel"><option value="">Todas las secciones</option></select>
+      </div>
+      <div>
         <label>Fuente principal</label>
         <select id="fuentePrincipal"><option value="">Todas las fuentes</option></select>
       </div>
-      <div style="display:flex;align-items:flex-end">
-        <label class="ck"><input type="checkbox" id="soloFuente"> Solo noticias que cubre esa fuente</label>
-      </div>
     </div>
+    <label class="ck" style="margin-top:8px"><input type="checkbox" id="soloFuente"> Solo noticias que cubre esa fuente</label>
   </div>
 
   <!-- Resumen por secciones -->
@@ -154,6 +156,8 @@ async function loadDigest(){
     $("fecha").textContent="Noticias de: "+(DIGEST.fecha||"hoy");
     const sel=$("fuentePrincipal");
     (DIGEST.medios||[]).forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m;sel.appendChild(o);});
+    const ss=$("seccionSel");
+    (DIGEST.secciones||[]).forEach(s=>{const o=document.createElement("option");o.value=s.seccion;o.textContent=s.seccion;ss.appendChild(o);});
     render();
   }catch(e){ $("fecha").textContent="No se pudo cargar el resumen del día ("+url+")."; }
 }
@@ -163,8 +167,10 @@ function render(){
   if(!DIGEST?.secciones){ $("resumen").innerHTML="<div class='card'>Sin datos.</div>"; return; }
   const prim=$("fuentePrincipal").value;
   const solo=$("soloFuente").checked;
+  const secSel=$("seccionSel").value;
   const cont=$("resumen"); cont.innerHTML="";
   for(const sec of DIGEST.secciones){
+    if(secSel && sec.seccion!==secSel) continue;
     let historias=sec.historias;
     if(prim && solo) historias=historias.filter(h=>h.fuentes.some(f=>f.medio===prim));
     if(!historias.length) continue;
@@ -188,6 +194,7 @@ function render(){
 }
 $("fuentePrincipal").addEventListener("change",render);
 $("soloFuente").addEventListener("change",render);
+$("seccionSel").addEventListener("change",render);
 
 // --- contexto para preguntas ---
 function contexto(){
