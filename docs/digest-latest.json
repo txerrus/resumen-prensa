@@ -1,12 +1,24 @@
 {
   "fecha": "martes, 20 de octubre de 2026",
-  "generado": "2026-10-20T12:22:20.684Z",
+  "generado": "2026-10-20T12:49:53.010Z",
   "medios": [
     "20minutos",
     "ABC",
+    "Computer Hoy",
+    "El Español",
     "El Mundo",
+    "El Orden Mundial",
     "El País",
+    "Europa Press",
+    "Expansión",
+    "Genbeta",
+    "Hipertextual",
     "La Vanguardia",
+    "Mundo Deportivo",
+    "Omicrono",
+    "Redacción Médica",
+    "Relevo",
+    "Xataka",
     "elDiario.es"
   ],
   "secciones": [
@@ -15,7 +27,7 @@
       "historias": [
         {
           "titular": "El Supremo amnistía a los líderes del 'procés'",
-          "resumen": "El Tribunal Supremo aplica la amnistía a Junqueras y a los exconsejeros condenados por malversación; el Gobierno lo celebra mientras el Supremo critica al Constitucional.",
+          "resumen": "El Tribunal Supremo aplica la amnistía a Junqueras y a los exconsejeros condenados por malversación; el Gobierno y el independentismo lo celebran, con críticas al Constitucional.",
           "importancia": 5,
           "fuentes": [
             {
@@ -27,12 +39,22 @@
               "medio": "La Vanguardia",
               "titulo": "El Gobierno da la bienvenida a la amnistía para Junqueras y Turull: “Es motivo de celebración”",
               "enlace": "https://www.lavanguardia.com/politica/20261020/11663681/gobierno-da-bienvenida-amnistia-junqueras-turull-motivo-celebracion.html"
+            },
+            {
+              "medio": "ABC",
+              "titulo": "El Supremo se adelanta al TC y aplica la amnistía a Junqueras y a otros tres presos del 'procés' con críticas a la extralimitación de Pumpido",
+              "enlace": "https://www.abc.es/espana/supremo-adelanta-tc-aplica-amnistia-junqueras-presos-20261020131014-nt.html"
+            },
+            {
+              "medio": "Europa Press",
+              "titulo": "El Supremo amnistía a Junqueras, Romeva, Turull y Bassa, los dirigentes del 'procés' condenados por malversación",
+              "enlace": "https://www.europapress.es/nacional/noticia-supremo-amnistia-junqueras-romeva-turull-bassa-dirigentes-proces-condenados-malversacion-20261020125615.html"
             }
           ]
         },
         {
           "titular": "Feijóo negocia con Vox el control del Senado",
-          "resumen": "Feijóo confirma negociaciones con Vox para lograr mayoría en el Senado tras el 29-N, clave para controlar el Tribunal Constitucional.",
+          "resumen": "Feijóo confirma conversaciones con Vox para lograr mayoría en el Senado tras el 29-N, clave para controlar el Tribunal Constitucional.",
           "importancia": 5,
           "fuentes": [
             {
@@ -42,18 +64,23 @@
             },
             {
               "medio": "El Mundo",
-              "titulo": "Vox se abre a facilitar la mayoría en el Senado si el PP le cede senadores",
-              "enlace": "https://www.elmundo.es/elecciones/elecciones-generales/2026/10/20/6ad664d7e85ecee20e8b459b.html"
+              "titulo": "Feijóo confirma conversaciones con Vox para las elecciones al Senado: \"Sería un error facilitar al 'sanchismo' el control\"",
+              "enlace": "https://www.elmundo.es/elecciones/elecciones-generales/2026/10/20/6ad710e4e9cf4aed3d8b459a.html"
             },
             {
-              "medio": "La Vanguardia",
-              "titulo": "¿Por qué es tan importante la unidad de bloque en las elecciones al Senado y por qué todos quieren controlarlo?",
-              "enlace": "https://www.lavanguardia.com/politica/20261020/11663619/importante-unidad-bloque-elecciones-senado-todos-quieren-controlarlo.html"
+              "medio": "El Español",
+              "titulo": "Las fórmulas para un acuerdo de PP y Vox en el Senado: retirar listas, la vía 2+1 o la cesión de senadores autonómicos",
+              "enlace": "https://www.elespanol.com/espana/politica/20261020/formulas-acuerdo-pp-vox-senado-retirada-listas-via-cesion-senadores-autonomicos/1003744427480_0.html"
             },
             {
               "medio": "elDiario.es",
               "titulo": "Feijóo confirma negociaciones con Vox para buscar una mayoría en el Senado que les permita controlar el Constitucional",
               "enlace": "https://www.eldiario.es/politica/feijoo-confirma-negociaciones-vox-buscar-mayoria-senado-les-permita-controlar-constitucional_1_13598996.html"
+            },
+            {
+              "medio": "Europa Press",
+              "titulo": "Feijóo busca un acuerdo con Vox en el Senado para tener mayoría: \"Sería un error facilitar al sanchismo su control\"",
+              "enlace": "https://www.europapress.es/nacional/noticia-feijoo-admite-busca-formula-vox-senado-porque-seria-error-facilitar-sanchismo-control-20261020093316.html"
             }
           ]
         },
@@ -71,6 +98,11 @@
               "medio": "El Mundo",
               "titulo": "Mónica García renuncia a las listas del Frente Amplio y retoma su papel de candidata contra Ayuso en Madrid",
               "enlace": "https://www.elmundo.es/elecciones/elecciones-generales/2026/10/20/6ad719defdddff597d8b458e.html"
+            },
+            {
+              "medio": "elDiario.es",
+              "titulo": "Mónica García renuncia a ir en las listas del Frente Amplio para centrarse en las autonómicas y Tesh Sidi será la número dos",
+              "enlace": "https://www.eldiario.es/politica/monica-garcia-renuncia-listas-frente-amplio-centrarse-elecciones-autonomicas_1_13598869.html"
             }
           ]
         }
@@ -81,7 +113,7 @@
       "historias": [
         {
           "titular": "Francia ensaya toques de queda ante los disturbios",
-          "resumen": "Varias ciudades francesas (París, Lille, Lyon, Niza) estudian toques de queda ante la oleada de protestas y disturbios.",
+          "resumen": "Varias ciudades francesas estudian toques de queda ante la oleada de protestas y disturbios, que se extienden por Europa.",
           "importancia": 4,
           "fuentes": [
             {
@@ -98,6 +130,11 @@
               "medio": "La Vanguardia",
               "titulo": "Francia ensaya el toque de queda",
               "enlace": "https://www.lavanguardia.com/internacional/20261020/11663056/francia-ensaya-toque-queda.html"
+            },
+            {
+              "medio": "elDiario.es",
+              "titulo": "Las protestas se extienden por Europa mientras la derecha culpa a la migración de los disturbios en Francia",
+              "enlace": "https://www.eldiario.es/internacional/protestas-extienden-europa-derecha-culpa-migracion-disturbios-francia_1_13598229.html"
             }
           ]
         },
@@ -107,11 +144,6 @@
           "importancia": 3,
           "fuentes": [
             {
-              "medio": "El País",
-              "titulo": "La policía desaloja las acampadas en Lisboa y Oporto y detiene a algunos de los manifestantes",
-              "enlace": "https://elpais.com/internacional/2026-10-20/la-policia-desaloja-las-acampadas-en-lisboa-y-oporto-y-detiene-a-algunos-de-los-manifestantes.html"
-            },
-            {
               "medio": "La Vanguardia",
               "titulo": "El desalojo de la acampada por la vivienda en Lisboa deja dos heridos y 50 detenidos",
               "enlace": "https://www.lavanguardia.com/internacional/20261020/11663616/desalojo-acampada-vivienda-lisboa-deja-dos-heridos-50-detenidos.html"
@@ -120,6 +152,28 @@
               "medio": "elDiario.es",
               "titulo": "La Policía portuguesa desaloja las acampadas por la vivienda de Lisboa y Oporto y detiene a 55 manifestantes",
               "enlace": "https://www.eldiario.es/internacional/policia-desaloja-acampadas-lisboa-oporto-detiene-manifestantes_1_13599085.html"
+            },
+            {
+              "medio": "20minutos",
+              "titulo": "La Policía desaloja las acampadas de la vivienda en Lisboa y Oporto y detiene a 55 personas por desobediencia",
+              "enlace": "https://www.20minutos.es/internacional/policia-desaloja-las-acampadas-por-vivienda-lisboa-oporto-detiene-varios-manifestantes_7050849_0.html"
+            }
+          ]
+        },
+        {
+          "titular": "Trump se distancia de Zelenski y se acerca a Putin",
+          "resumen": "Trump rompe con Zelenski mientras Putin propone una cumbre trilateral; crece la tensión sobre el apoyo a Ucrania.",
+          "importancia": 3,
+          "fuentes": [
+            {
+              "medio": "20minutos",
+              "titulo": "Trump rompe con Zelenski y vuelve a inclinar el tablero hacia Putin: \"Es hora de que otra persona negocie por Ucrania\"",
+              "enlace": "https://www.20minutos.es/internacional/trump-rompe-con-zelenski-vuelve-inclinar-tablero-hacia-putin-es-hora-que-otra-persona-negocie-por-ucrania_7050805_0.html"
+            },
+            {
+              "medio": "El Mundo",
+              "titulo": "Putin propone a Trump y Xi una cumbre trilateral el mes que viene para dividir el mundo en áreas de influencia, según el Wall Street Journal",
+              "enlace": "https://www.elmundo.es/internacional/2026/10/19/6ad5a9a9e85ecec84e8b4576.html"
             }
           ]
         },
@@ -139,6 +193,18 @@
               "enlace": "https://www.eldiario.es/internacional/diputada-australiana-pierde-pierna-atropellada_1_13599443.html"
             }
           ]
+        },
+        {
+          "titular": "Análisis: las redes de la ultraderecha en Iberoamérica",
+          "resumen": "Un análisis geopolítico repasa cómo operan las redes de la ultraderecha en Iberoamérica (Milei, Vox, Bolsonaro).",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El Orden Mundial",
+              "titulo": "Milei, Vox o los Bolsonaro: así funcionan las redes de ultraderecha en Iberoamérica",
+              "enlace": "https://elordenmundial.com/milei-vox-bolsonaro-redes-ultraderecha-iberoamerica/"
+            }
+          ]
         }
       ]
     },
@@ -147,13 +213,13 @@
       "historias": [
         {
           "titular": "Ayuso estudia mover su despacho por la acampada en Sol",
-          "resumen": "Ayuso valora trasladar temporalmente su despacho por 'seguridad' debido a la acampada por la vivienda en Sol y responsabiliza a Sánchez de la tensión.",
+          "resumen": "Ayuso valora trasladar temporalmente su despacho por 'seguridad' por la acampada de la vivienda en Sol y responsabiliza a Sánchez de la tensión.",
           "importancia": 3,
           "fuentes": [
             {
               "medio": "El Mundo",
-              "titulo": "Ayuso valora trasladar \"temporalmente\" su despacho por \"seguridad\" a otras instalaciones de la Comunidad",
-              "enlace": "https://www.elmundo.es/madrid/2026/10/20/6ad7294fe4d4d868708b45a5.html"
+              "titulo": "Ayuso ya siente que \"no habrá paz en las calles\", como le avisó la izquierda: \"El escrache nos recordó al que sufrió Cifuentes\"",
+              "enlace": "https://www.elmundo.es/madrid/2026/10/20/6ad64f3fe4d4d8ff268b458d.html"
             },
             {
               "medio": "20minutos",
@@ -171,6 +237,18 @@
               "medio": "20minutos",
               "titulo": "La huelga de profesores eleva la tensión en las calles de Madrid con cortes en la A-3, boicot a la consejera de Educación y escrache a Ayuso",
               "enlace": "https://www.20minutos.es/madrid/cuarta-jornada-huelga-profesores-madrid-discurre-con-menor-seguimiento-boicot-los-actos-consejera-protestas_7050381_0.html"
+            }
+          ]
+        },
+        {
+          "titular": "Roban un millón embistiendo coches blindados",
+          "resumen": "Dos detenidos por robar un millón de euros embistiendo furgones blindados de transporte de dinero.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El Mundo",
+              "titulo": "Dos detenidos por robar un millón de euros embistiendo coches blindados que transportaban dinero de salones de juego",
+              "enlace": "https://www.elmundo.es/madrid/2026/10/20/6ad6041fe4d4d8bf3a8b4583.html"
             }
           ]
         }
@@ -203,6 +281,11 @@
               "medio": "elDiario.es",
               "titulo": "Vivienda duplica la subvención a las comunidades que aplican el tope a los alquileres hasta los 180 millones",
               "enlace": "https://www.eldiario.es/economia/vivienda-duplica-subvencion-comunidades-aplican-ley-vivienda-180-millones_1_13599587.html"
+            },
+            {
+              "medio": "ABC",
+              "titulo": "El Gobierno riega a Cataluña con 120 millones por intervenir los alquileres",
+              "enlace": "https://www.abc.es/economia/gobierno-riega-cataluna-120-millones-intervenir-alquileres-20261020124736-nt.html"
             }
           ]
         },
@@ -217,14 +300,14 @@
               "enlace": "https://elpais.com/economia/2026-10-20/el-consejo-de-ministros-aprueba-ampliar-la-pension-de-viudedad-a-parejas-con-hijos-que-no-formalizasen-la-relacion.html"
             },
             {
-              "medio": "El Mundo",
-              "titulo": "El Gobierno rescata reformas de ayudas atascadas desde hace más de dos años a las puertas del 29-N y sin acuerdo en el diálogo social",
-              "enlace": "https://www.elmundo.es/economia/2026/10/20/6ad730a0e85ecece7f8b458c.html"
+              "medio": "ABC",
+              "titulo": "El Gobierno entra en campaña con una batería de mejoras para viudas y parejas con hijos",
+              "enlace": "https://www.abc.es/economia/gobierno-aprueba-decreto-extender-mejoras-sociales-viudas-20261020093504-nt.html"
             },
             {
-              "medio": "elDiario.es",
-              "titulo": "El Gobierno amplía las prestaciones de padres de hijos enfermos, víctimas de violencia de género y catástrofes",
-              "enlace": "https://www.eldiario.es/economia/gobierno-amplia-prestaciones-padres-hijos-enfermos-victimas-violencia-genero-catastrofes_1_13599382.html"
+              "medio": "20minutos",
+              "titulo": "El Gobierno aprueba ampliar la pensión de viudedad a parejas no registradas con hijos y mejora las bajas para los afectados por catástrofes",
+              "enlace": "https://www.20minutos.es/lainformacion/economia-y-finanzas/gobierno-aprueba-ampliar-pension-viudedad-parejas-no-registradas-con-hijos-mejora-las-bajas-para-los-afectados-por-catastrofes_7050975_0.html"
             }
           ]
         },
@@ -234,26 +317,60 @@
           "importancia": 3,
           "fuentes": [
             {
-              "medio": "El Mundo",
-              "titulo": "Un fallo de Google Cloud en Europa provoca una caída global en aplicaciones como la de Revolut que impide los pagos con tarjeta",
-              "enlace": "https://www.elmundo.es/economia/dinero-inversion/2026/10/20/6ad737fcfc6c8327518b45b1.html"
-            },
-            {
               "medio": "La Vanguardia",
               "titulo": "Revolut sufre una caída de servicios en España, Reino Unido y Francia",
               "enlace": "https://www.lavanguardia.com/economia/20261020/11663558/revolut-sufre-caida-servicios-espana-reino-unido-francia.html"
+            },
+            {
+              "medio": "ABC",
+              "titulo": "Caída de Revolut: la aplicación y varios servicios quedan interrumpidos por una caída de Google Cloud",
+              "enlace": "https://www.abc.es/economia/revolut-sufre-caida-interrumpen-varios-servicios-20261020120624-nt.html"
             }
           ]
         },
         {
-          "titular": "La vivienda empuja a 770.000 trabajadores a la pobreza",
-          "resumen": "El coste de la vivienda lleva a la pobreza a 770.000 trabajadores, según Oxfam Intermón.",
+          "titular": "Competencia obliga a Renfe a abrir sus talleres a Ouigo",
+          "resumen": "La CNMC exige a Renfe dar acceso a Ouigo a sus talleres de Madrid y Barcelona.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "El País",
-              "titulo": "El coste de la vivienda empuja a 770.000 trabajadores a la pobreza, según Oxfam Intermón",
-              "enlace": "https://elpais.com/economia/vivienda/2026-10-20/el-coste-de-la-vivienda-empuja-a-770000-trabajadores-a-la-pobreza-segun-oxfam-intermon.html"
+              "medio": "elDiario.es",
+              "titulo": "Competencia exige a Renfe dar acceso a Ouigo a sus talleres en Madrid y Barcelona",
+              "enlace": "https://www.eldiario.es/economia/competencia-exige-renfe-dar-acceso-ouigo-talleres-madrid-barcelona_1_13599421.html"
+            },
+            {
+              "medio": "ABC",
+              "titulo": "La CNMC exige a Renfe dar acceso a Ouigo a sus talleres de Madrid y Barcelona",
+              "enlace": "https://www.abc.es/economia/cnmc-exige-renfe-dar-acceso-ouigo-talleres-20261020112611-nt.html"
+            }
+          ]
+        },
+        {
+          "titular": "El precio de la energía presiona la economía",
+          "resumen": "El precio de la luz se disparó por el gas y el BCE prevé un fuerte impacto del alza energética en los precios.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El Mundo",
+              "titulo": "El precio de la luz se multiplica casi por nueve entre febrero y septiembre por el gas y la menor producción renovable",
+              "enlace": "https://www.elmundo.es/economia/2026/10/20/6ad64e6221efa0423b8b4589.html"
+            },
+            {
+              "medio": "20minutos",
+              "titulo": "Los economistas del BCE prevén un \"fuerte impacto\" del alza de la energía en los cereales, el pan o la pasta",
+              "enlace": "https://www.20minutos.es/lainformacion/economia-y-finanzas/los-economistas-bce-preven-un-fuerte-impacto-alza-energia-los-cereales-pan-pasta_7050942_0.html"
+            }
+          ]
+        },
+        {
+          "titular": "Baja la confianza empresarial",
+          "resumen": "La confianza empresarial desciende en el último trimestre del año.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "Expansión",
+              "titulo": "La confianza empresarial desciende en el último trimestre del año",
+              "enlace": "https://www.expansion.com/economia/2026/10/20/confianza-empresarial-desciende-ultimo-trimestre-ano.html"
             }
           ]
         }
@@ -275,23 +392,6 @@
           ]
         },
         {
-          "titular": "IA que estima el riesgo de muerte a partir del rostro",
-          "resumen": "Una IA de reconocimiento facial permite calcular el riesgo de muerte en pacientes con cáncer.",
-          "importancia": 2,
-          "fuentes": [
-            {
-              "medio": "El País",
-              "titulo": "Una IA encuentra en la cara signos para calcular el riesgo de muerte en pacientes de cáncer",
-              "enlace": "https://elpais.com/salud-y-bienestar/2026-10-19/una-ia-encuentra-en-la-cara-signos-para-calcular-el-riesgo-de-muerte-en-pacientes-de-cancer.html"
-            },
-            {
-              "medio": "elDiario.es",
-              "titulo": "Una IA de reconocimiento facial permite calcular el riesgo de muerte de pacientes con cáncer y personalizar tratamientos",
-              "enlace": "https://www.eldiario.es/sociedad/ia-reconocimiento-facial-permite-calcular-riesgo-muerte-pacientes-cancer-personalizar-tratamientos_1_13598768.html"
-            }
-          ]
-        },
-        {
           "titular": "El primer ministro de Países Bajos será padre por gestación subrogada",
           "resumen": "Rob Jetten anuncia que tendrá un hijo por gestación subrogada.",
           "importancia": 2,
@@ -307,6 +407,30 @@
               "enlace": "https://www.eldiario.es/sociedad/primer-ministro-paises-bajos-anuncia-espera-hijo-gestacion-subrogada_1_13599778.html"
             }
           ]
+        },
+        {
+          "titular": "IA que estima el riesgo de muerte a partir del rostro",
+          "resumen": "Una IA de reconocimiento facial permite calcular el riesgo de muerte en pacientes con cáncer.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "elDiario.es",
+              "titulo": "Una IA de reconocimiento facial permite calcular el riesgo de muerte de pacientes con cáncer y personalizar tratamientos",
+              "enlace": "https://www.eldiario.es/sociedad/ia-reconocimiento-facial-permite-calcular-riesgo-muerte-pacientes-cancer-personalizar-tratamientos_1_13598768.html"
+            }
+          ]
+        },
+        {
+          "titular": "Intervienen más de 30 toneladas de carne en mal estado",
+          "resumen": "Carne en el suelo, sin refrigerar y alterada con químicos: intervienen más de 30 toneladas.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El País",
+              "titulo": "Carne en el suelo, sin refrigerar y alterada con químicos: intervienen más de 30 toneladas de productos cárnicos en un pueblo de Málaga",
+              "enlace": "https://elpais.com/sociedad/2026-10-20/carne-en-el-suelo-sin-refrigerar-y-alterada-con-quimicos-intervienen-mas-de-30-toneladas-de-productos-carnicos-en-un-pueblo-de-malaga.html"
+            }
+          ]
         }
       ]
     },
@@ -315,7 +439,7 @@
       "historias": [
         {
           "titular": "Otra dana, otro país",
-          "resumen": "Las brutales lluvias en el Mediterráneo ponen a prueba las lecciones aprendidas tras la tragedia de la dana de 2024",
+          "resumen": "Artículo de opinión.",
           "importancia": 2,
           "fuentes": [
             {
@@ -326,32 +450,20 @@
           ]
         },
         {
-          "titular": "Investigación urgente en Ceuta",
-          "resumen": "Los informes médicos enviados al juzgado de guardia de la ciudad autónoma son suficientes para indagar si hubo agresiones de militares a inmigrantes",
+          "titular": "Un país en llamas",
+          "resumen": "Artículo de opinión.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "El País",
-              "titulo": "Investigación urgente en Ceuta",
-              "enlace": "https://elpais.com/opinion/2026-10-20/investigacion-urgente-en-ceuta.html"
-            }
-          ]
-        },
-        {
-          "titular": "Duro y a la cabeza",
-          "resumen": "El Gobierno francés anuncia toques de queda en París, Lyon y otras ciudades por los disturbios del fin de semana",
-          "importancia": 2,
-          "fuentes": [
-            {
-              "medio": "elDiario.es",
-              "titulo": "Duro y a la cabeza",
-              "enlace": "https://www.eldiario.es/opinion/duro-cabeza_131_13598648.html"
+              "medio": "La Vanguardia",
+              "titulo": "Un país en llamas",
+              "enlace": "https://www.lavanguardia.com/opinion/20261020/11662895/pais-llamas.html"
             }
           ]
         },
         {
           "titular": "Huelga general del 11 de noviembre: ¿Hay derecho? ¿Hay razones?",
-          "resumen": "Ya ha sido registrada en el Ministerio de Trabajo la convocatoria de huelga general para el próximo 11 de noviembre de varios Sindicatos, entre ellos los más representativos a nive",
+          "resumen": "Artículo de opinión.",
           "importancia": 2,
           "fuentes": [
             {
@@ -362,38 +474,26 @@
           ]
         },
         {
-          "titular": "El beso de Fuenlabrada",
-          "resumen": "¿A quién en su boda no le han ovacionado por dar un beso, exigencia de los invitados?",
+          "titular": "La hora de los valientes",
+          "resumen": "Artículo de opinión.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "La Vanguardia",
-              "titulo": "El beso de Fuenlabrada",
-              "enlace": "https://www.lavanguardia.com/opinion/20261020/11662965/beso-fuenlabrada.html"
+              "medio": "El País",
+              "titulo": "La hora de los valientes",
+              "enlace": "https://elpais.com/opinion/2026-10-20/la-hora-de-los-valientes.html"
             }
           ]
         },
         {
           "titular": "Orgulloso",
-          "resumen": "He escogido esta Tercera «Orgulloso» de hace cinco años, porque casi tal cual se podría volver a publicar hoy.Y es que, con la que está cayendo y la que se avecina, nos hace falta ",
+          "resumen": "Artículo de opinión.",
           "importancia": 2,
           "fuentes": [
             {
               "medio": "ABC",
               "titulo": "Orgulloso",
               "enlace": "https://www.abc.es/opinion/angel-exposito-orgulloso-20261020012052-nt.html"
-            }
-          ]
-        },
-        {
-          "titular": "Cumpleaños feliz",
-          "resumen": "De Ana Mato contaba hace años Montano que era la autora de la frase más pija de la historia de España. Leer",
-          "importancia": 2,
-          "fuentes": [
-            {
-              "medio": "El Mundo",
-              "titulo": "Cumpleaños feliz",
-              "enlace": "http://www.elmundo.es/elmundo/2013/02/03/opinion/1359913072.html"
             }
           ]
         }
@@ -403,19 +503,51 @@
       "seccion": "Deportes",
       "historias": [
         {
-          "titular": "Lamine y el Barça, foco a pocos días del clásico",
-          "resumen": "A pocos días del clásico, Lamine Yamal acapara la atención en París mientras el Barça mide al campeón.",
+          "titular": "PSG-Barça: la gran cita europea, con Lamine en el foco",
+          "resumen": "A pocos días del clásico, el Barça visita al campeón PSG; Lamine Yamal acapara la atención en París.",
           "importancia": 3,
           "fuentes": [
             {
+              "medio": "Mundo Deportivo",
+              "titulo": "Laporta: \"Es el mejor partido que se puede ver en Europa\"",
+              "enlace": "https://www.mundodeportivo.com/futbol/fc-barcelona/20261020/1004240981/laporta-nasser-comida-directivas.html"
+            },
+            {
+              "medio": "Relevo",
+              "titulo": "Del 6-1 a los 222 millones: todo lo que esconde el PSG-Barça",
+              "enlace": "https://www.relevo.com/futbol/del-6-1-a-los-222-millones-todo-lo-que-esconde-el-psg-barca.html"
+            },
+            {
               "medio": "El País",
-              "titulo": "Luis Enrique: “La mejor manera de defender a Lamine es tener el balón”",
-              "enlace": "https://elpais.com/deportes/futbol/2026-10-19/luis-enrique-la-mejor-manera-de-defender-a-lamine-es-tener-el-balon.html"
+              "titulo": "El aspirante Barcelona pregunta al campeón en París",
+              "enlace": "https://elpais.com/deportes/futbol/2026-10-20/el-aspirante-barcelona-pregunta-al-campeon-en-paris.html"
             },
             {
               "medio": "El Mundo",
               "titulo": "Un Lamine de récords acapara los focos en París: \"Compararlo con Messi sería contraproducente\"",
               "enlace": "https://www.elmundo.es/deportes/futbol/champions-league/2026/10/19/6ad6511ee9cf4aff558b4589.html"
+            }
+          ]
+        },
+        {
+          "titular": "Mourinho: 'Lo único intocable es el escudo'",
+          "resumen": "Mourinho lanza un aviso a sus futbolistas y confirma que Vinicius jugará de extremo izquierdo.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "Mundo Deportivo",
+              "titulo": "Mourinho: \"¿Vinicius intocable? Intocable es el escudo\"",
+              "enlace": "https://www.mundodeportivo.com/futbol/real-madrid/20261020/1004241003/mourinho-arbitro-manana-no-necesitara-var-bueno.html"
+            },
+            {
+              "medio": "Relevo",
+              "titulo": "Mourinho despeja la duda: «Mañana va a jugar Vinicius de extremo izquierdo»",
+              "enlace": "https://www.relevo.com/futbol/mourinho-despeja-la-duda-manana-va-a-jugar-vinicius-de-extremo-izquierdo.html"
+            },
+            {
+              "medio": "La Vanguardia",
+              "titulo": "Mourinho lanza un aviso a sus futbolistas: “Lo único intocable es el escudo”",
+              "enlace": "https://www.lavanguardia.com/deportes/real-madrid/20261020/11663645/mourinho-lanza-mensaje-futbolistas-unico-intocable-escudo.html"
             }
           ]
         },
@@ -437,36 +569,36 @@
           ]
         },
         {
-          "titular": "Bellerín se querella contra un youtuber por delito de odio",
-          "resumen": "Héctor Bellerín interpone una querella contra el youtuber Iñaki Angulo.",
+          "titular": "Marc López, nuevo capitán de la Copa Davis en 2027",
+          "resumen": "Marc López sustituirá a David Ferrer como capitán del equipo español de Copa Davis.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "El País",
-              "titulo": "Héctor Bellerín interpone una querella contra el ‘youtuber’ Iñaki Angulo por delito de odio",
-              "enlace": "https://elpais.com/deportes/futbol/2026-10-20/hector-bellerin-interpone-una-querella-contra-el-youtuber-inaki-angulo-por-delito-de-odio.html"
+              "medio": "El Mundo",
+              "titulo": "Marc López sustituirá a David Ferrer como capitán de la Copa Davis en 2027",
+              "enlace": "https://www.elmundo.es/deportes/tenis/copa-davis/2026/10/19/6ad5ff9de85ece70368b4588.html"
             },
             {
-              "medio": "La Vanguardia",
-              "titulo": "Héctor Bellerín interpone una querella contra el youtuber Iñaki Angulo por delito de odio",
-              "enlace": "https://www.lavanguardia.com/deportes/20261020/11663408/hector-bellerin-interpone-querella-youtuber-inaki-angulo-delito-odio.html"
+              "medio": "20minutos",
+              "titulo": "Marc López, el tenista que ganó el oro olímpico junto a Rafa Nadal, nuevo capitán español de Copa Davis",
+              "enlace": "https://www.20minutos.es/deportes/tenis/marc-lopez-tenista-que-gano-oro-olimpico-junto-rafa-nadal-nuevo-capitan-espanol-copa-davis-hasta-2029_7050504_0.html"
             }
           ]
         },
         {
-          "titular": "Polémica por el codazo de Güler",
-          "resumen": "Sale a la luz un vídeo de la acción entre Arda Güler y Peque; LaLiga explica por qué no mostró más repeticiones.",
+          "titular": "La IndyCar correrá en Barcelona desde 2027 con Palou",
+          "resumen": "Montmeló acogerá una carrera de IndyCar en 2027 con Álex Palou como gran reclamo.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "La Vanguardia",
-              "titulo": "LaLiga explica por qué no se ofrecieron más repeticiones del codazo de Güler: “Fue una decisión editorial”",
-              "enlace": "https://www.lavanguardia.com/deportes/futbol/20261020/11663316/laliga-explica-ofrecieron-mas-repeticiones-codazo-gueler-decision-editorial.html"
+              "medio": "Relevo",
+              "titulo": "La IndyCar correrá en Barcelona desde 2027 con Álex Palou como gran reclamo",
+              "enlace": "https://www.relevo.com/mas-motor/la-indycar-correra-en-barcelona-desde-2027-con-alex-palou-como-gran-reclamo.html"
             },
             {
               "medio": "20minutos",
-              "titulo": "Sale a la luz un vídeo inédito de la polémica acción entre Arda Güler y Peque",
-              "enlace": "https://www.20minutos.es/deportes/futbol/sale-luz-un-video-inedito-polemica-accion-entre-arda-gueler-peque_7050509_0.html"
+              "titulo": "La IndyCar correrá en España: Montmeló albergará una carrera en 2027 con Álex Palou",
+              "enlace": "https://www.20minutos.es/deportes/deportes_motor/indycar-correra-espana-montmelo-albergara-una-carrera-2027-con-alex-palou-como-protagonista_7050717_0.html"
             }
           ]
         }
@@ -520,19 +652,14 @@
           ]
         },
         {
-          "titular": "El Thyssen expone la obsesión de Dalí por Freud",
-          "resumen": "El Museo Thyssen dedica una muestra a la relación de Dalí con las ideas de Freud.",
+          "titular": "Los Javis preparan su salto a Hollywood",
+          "resumen": "Los Javis hablan de su película bélica en Hollywood: 'la más gay y más grande'.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "El País",
-              "titulo": "Aún quedan cosas por descubrir de Dalí en el Thyssen, pero no se olvide de pedir cita con el psiquiatra a la salida",
-              "enlace": "https://elpais.com/cultura/2026-10-19/aun-quedan-cosas-por-descubrir-de-dali-en-el-thyssen-pero-no-se-olvide-de-pedir-cita-con-el-psiquiatra-a-la-salida.html"
-            },
-            {
-              "medio": "La Vanguardia",
-              "titulo": "El Museo Thyssen muestra la obsesión de Dalí por Freud y cómo éste transformó toda su obra",
-              "enlace": "https://www.lavanguardia.com/cultura/20261019/11662961/museo-thyssen-muestra-obsesion-dali-freud-como-este-transformo-toda-obra.html"
+              "medio": "El Mundo",
+              "titulo": "Los Javis en Hollywood: \"Queríamos hacer la película bélica más gay y más grande de la historia\"",
+              "enlace": "https://www.elmundo.es/cultura/cine/2026/10/19/6ad67abdfdddff707f8b4578.html"
             }
           ]
         }
@@ -543,7 +670,7 @@
       "historias": [
         {
           "titular": "Las abejas llevan un siglo desapareciendo en Europa",
-          "resumen": "Un estudio alerta de que la presencia de abejas ha caído un 34% en Europa en el último siglo, con Galicia entre las zonas más afectadas.",
+          "resumen": "Un estudio alerta de que la presencia de abejas ha caído un 34% en Europa en el último siglo, con Galicia entre las más afectadas.",
           "importancia": 3,
           "fuentes": [
             {
@@ -604,59 +731,86 @@
       "historias": [
         {
           "titular": "Un fallo de Google Cloud tumba Revolut en Europa",
-          "resumen": "Un fallo eléctrico de Google Cloud en Londres deja sin servicio a Revolut en toda Europa.",
+          "resumen": "Un fallo de Google Cloud deja sin servicio a Revolut, impidiendo pagos y el acceso a la app en toda Europa.",
           "importancia": 3,
           "fuentes": [
             {
-              "medio": "20minutos",
-              "titulo": "Caída de Revolut: el banco digital sufre problemas en España",
-              "enlace": "https://www.20minutos.es/tecnologia/actualidad/caida-revolut-banco-digital-sufre-problemas-espana_7050917_0.html"
+              "medio": "Hipertextual",
+              "titulo": "Revolut sufre una caída masiva y no se puede ni usar la app ni pagar… o acceder a tu dinero",
+              "enlace": "https://hipertextual.com/tecnologia/revolut-sufre-una-caida-masiva/"
             },
             {
-              "medio": "elDiario.es",
-              "titulo": "Un fallo eléctrico de Google Cloud en Londres deja sin servicio a Revolut en toda Europa",
-              "enlace": "https://www.eldiario.es/tecnologia/caida-google-cloud-londres-deja-servicio-revolut-afecta-banca-empresas-britanicas_1_13599838.html"
+              "medio": "Omicrono",
+              "titulo": "Revolut sufre una caída global por culpa de un fallo de Google Cloud que impide a los usuarios realizar pagos con tarjeta",
+              "enlace": "https://www.elespanol.com/omicrono/software/20261020/revolut-sufre-caida-global-culpa-fallo-google-cloud-impide-usuarios-realizar-pagos-tarjeta/1003744427408_0.html"
             }
           ]
         },
         {
           "titular": "Google despliega sus robotaxis Waymo en Madrid",
-          "resumen": "Google lanza en Madrid sus primeros vehículos autónomos Waymo.",
+          "resumen": "Google inicia en Madrid las pruebas de sus vehículos autónomos Waymo.",
           "importancia": 2,
           "fuentes": [
+            {
+              "medio": "Omicrono",
+              "titulo": "Waymo llega a Madrid: los taxis autónomos de Google inician sus pruebas en unos días y darán servicio en 2027",
+              "enlace": "https://www.elespanol.com/omicrono/tecnologia/20261020/waymo-llega-madrid-taxis-autonomos-google-inician-pruebas-dias-daran-servicio/1003744427024_0.html"
+            },
             {
               "medio": "El País",
               "titulo": "Google despliega en Madrid sus primeros robotaxis autónomos Waymo",
               "enlace": "https://elpais.com/tecnologia/2026-10-20/google-despliega-en-madrid-sus-primeros-robotaxis-autonomos-waymo.html"
+            }
+          ]
+        },
+        {
+          "titular": "Polémicas en torno a la IA de Anthropic",
+          "resumen": "Elon Musk y Anthropic discrepan sobre el reparto de la riqueza de la IA, mientras el Pentágono deja de usar sus herramientas.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "Xataka",
+              "titulo": "Elon Musk y Anthropic discrepan sobre cómo repartir la riqueza generada por la IA",
+              "enlace": "https://www.xataka.com/robotica-e-ia/elon-musk-anthropic-discrepan-como-repartir-riqueza-generada-ia"
+            },
+            {
+              "medio": "Genbeta",
+              "titulo": "El Pentágono deja de utilizar las herramientas de IA de Anthropic tras incluir a la empresa en una lista negra, según pudo saber la BBC",
+              "enlace": "https://www.genbeta.com/inteligencia-artificial/pentagono-deja-utilizar-herramientas-ia-anthropic-incluir-a-empresa-lista-negra-pudo-saber-bbc"
+            }
+          ]
+        },
+        {
+          "titular": "Google aparca una gran inversión en centros de datos en España",
+          "resumen": "Google suspende una inversión milmillonaria en centros de datos en España a la espera de un decreto del Gobierno.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "Xataka",
+              "titulo": "Google suspende una inversión de miles de millones en centros de datos en España a la espera del decreto del Gobierno",
+              "enlace": "https://www.xataka.com/empresas-y-economia/google-suspende-inversion-miles-millones-centros-datos-espana-a-espera-decreto-gobierno"
             },
             {
               "medio": "El Mundo",
-              "titulo": "Waymo, la empresa de coches autónomos de Google, recibe la autorización para circular en Madrid y lanza sus primeras pruebas",
-              "enlace": "https://www.elmundo.es/economia/empresas/2026/10/20/6ad73803e4d4d86e188b4575.html"
+              "titulo": "Google suspende una inversión milmillonaria en centros de datos en España a la espera del decreto del Gobierno",
+              "enlace": "https://www.elmundo.es/economia/empresas/2026/10/20/6ad602a7fc6c8390178b45b5.html"
             }
           ]
         },
         {
-          "titular": "Anthropic donará parte de sus acciones ante el rechazo a la IA",
-          "resumen": "Anthropic destinará una gran suma a donaciones para mitigar el impacto de la IA en el empleo.",
+          "titular": "Apple anuncia evento: cambios en el MacBook Pro",
+          "resumen": "Apple convoca un evento el 28 de octubre con un posible cambio histórico en el MacBook Pro.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "elDiario.es",
-              "titulo": "Anthropic donará 42.000 millones para aplacar el rechazo a la IA ante su histórica salida a Bolsa",
-              "enlace": "https://www.eldiario.es/tecnologia/anthropic-donara-42-000-millones-aplacar-rechazo-ia-historica-salida-bolsa_1_13596220.html"
-            }
-          ]
-        },
-        {
-          "titular": "China prepara restricciones a la IA",
-          "resumen": "China ultima restricciones sobre la inteligencia artificial y refuerza el control de los drones.",
-          "importancia": 2,
-          "fuentes": [
+              "medio": "Hipertextual",
+              "titulo": "Apple anuncia otro evento y todo apunta a un cambio histórico en el MacBook Pro",
+              "enlace": "https://hipertextual.com/apple/apple-evento-pro-and-tell-macbook-pro-pantalla-tactil-octubre-2026/"
+            },
             {
-              "medio": "20minutos",
-              "titulo": "China quiere blindar su tecnología: prepara restricciones a la IA y refuerza el control sobre los drones",
-              "enlace": "https://www.20minutos.es/tecnologia/actualidad/china-restricciones-exportacion-inteligencia-artificial-drones-tecnologia_7050602_0.html"
+              "medio": "Computer Hoy",
+              "titulo": "Apple anuncia un evento para el 28 de octubre: los MacBook Pro con pantalla táctil están cada vez más cerca",
+              "enlace": "https://computerhoy.20minutos.es/dispositivos/apple-anuncia-un-evento-para-28-octubre-los-macbook-pro-con-pantalla-tactil-estan-cada-vez-mas-cerca_7050754_0.html"
             }
           ]
         }
@@ -666,8 +820,8 @@
       "seccion": "Salud",
       "historias": [
         {
-          "titular": "Día contra el cáncer de mama: cribados y avances",
-          "resumen": "Galicia adelanta los cribados de cáncer de mama a los 45 años mientras se difunden avances médicos y testimonios.",
+          "titular": "Día contra el cáncer de mama: cribados y concienciación",
+          "resumen": "Galicia adelanta los cribados a los 45 años mientras la OMS analiza los riesgos del cáncer y se multiplican las iniciativas de concienciación.",
           "importancia": 3,
           "fuentes": [
             {
@@ -677,32 +831,44 @@
             },
             {
               "medio": "20minutos",
-              "titulo": "Lo que no se cuenta del cáncer de mama: la segunda batalla es con el espejo",
-              "enlace": "https://www.20minutos.es/salud/que-no-se-cuenta-cancer-mama-segunda-batalla-es-con-espejo_7050403_0.html"
+              "titulo": "La OMS analiza los riesgos del cáncer y otras enfermedades no transmisibles según el sexo y el nivel económico",
+              "enlace": "https://www.20minutos.es/salud/oms-analiza-los-riesgos-cancer-otras-enfermedades-no-transmisibles-segun-sexo-nivel-economico_7050932_0.html"
             }
           ]
         },
         {
-          "titular": "La mitad de los jóvenes españoles sufre ansiedad",
-          "resumen": "Un estudio señala que la mitad de los jóvenes en España tiene ansiedad moderada o grave.",
+          "titular": "La reforma de Atención Primaria sigue pese a las elecciones",
+          "resumen": "La reforma de la Atención Primaria busca garantizar su continuidad pese al calendario electoral.",
           "importancia": 2,
           "fuentes": [
             {
-              "medio": "20minutos",
-              "titulo": "La mitad de los jóvenes españoles tiene ansiedad moderada o grave",
-              "enlace": "https://www.20minutos.es/salud/mitad-los-jovenes-espanoles-tiene-ansiedad-moderada-grave_7050524_0.html"
+              "medio": "Redacción Médica",
+              "titulo": "La reforma de Primaria garantiza su continuidad pese a las elecciones a la espera de resultados",
+              "enlace": "https://www.redaccionmedica.com/profesionales/sociedades-cientificas/20261020/la-reforma-de-primaria-garantiza-su-continuidad-pese-las-elecciones-la-espera-resultados/362305_0.html"
             }
           ]
         },
         {
-          "titular": "Los psiquiatras se rebelan contra la nueva ley de ingresos",
-          "resumen": "Los psiquiatras protestan contra Sanidad por la nueva ley de ingresos involuntarios.",
+          "titular": "Las mujeres ya vapean más que los hombres",
+          "resumen": "El aumento del vapeo entre mujeres enciende las alarmas de los médicos.",
           "importancia": 2,
           "fuentes": [
             {
               "medio": "El Mundo",
-              "titulo": "Rebelión de los psiquiatras contra Sanidad por la nueva ley de ingresos involuntarios: \"Deja en el limbo a los enfermos graves\"",
-              "enlace": "https://www.elmundo.es/salud/2026/10/19/6ad5fa2be9cf4a9c338b457f.html"
+              "titulo": "Ellas ya vapean más que ellos: el nuevo hábito que enciende las alarmas de los médicos",
+              "enlace": "https://www.elmundo.es/salud/2026/10/19/6ad628dafdddff12038b45a6.html"
+            }
+          ]
+        },
+        {
+          "titular": "El tabaquismo pasivo afecta a uno de cada cuatro no fumadores",
+          "resumen": "Sin ley antitabaco, más del 23% de los no fumadores sufre los efectos del humo ajeno.",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El Mundo",
+              "titulo": "Sin ley antitabaco, más del 23% de los no fumadores en España sufren los efectos del humo pasivo",
+              "enlace": "https://www.elmundo.es/salud/2026/10/20/6ad716e2e4d4d85b6d8b456f.html"
             }
           ]
         }
