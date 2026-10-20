@@ -1,0 +1,24 @@
+{
+  "_comentario": "Edita libremente. Cada tema tiene una lista de feeds RSS. Añade o quita los que quieras.",
+  "temas": {
+    "Portada / General": [
+      "https://www.eldiario.es/rss/",
+      "https://www.20minutos.es/rss/"
+    ],
+    "Internacional": [
+      "https://www.eldiario.es/rss/internacional/",
+      "https://www.20minutos.es/rss/internacional/"
+    ],
+    "Economía": [
+      "https://www.eldiario.es/rss/economia/",
+      "https://www.20minutos.es/rss/economia/"
+    ],
+    "Deportes": [
+      "https://www.20minutos.es/rss/deportes/"
+    ],
+    "Tecnología": [
+      "https://www.20minutos.es/rss/tecnologia/",
+      "https://www.eldiario.es/rss/tecnologia/"
+    ]
+  }
+}
