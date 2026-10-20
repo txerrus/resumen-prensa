@@ -24,7 +24,7 @@ const MAX_POR_SECCION = 40; // tope por sección (asegura que todas aparecen)
 const MAX_ARTICULOS = 280;  // tope global que se manda a Claude
 const SECCIONES = [
   "Nacional / España", "Internacional / Mundo", "Local / Madrid", "Economía", "Sociedad",
-  "Deportes", "Cultura", "Ciencia", "Tecnología", "Salud", "Otras"
+  "Opinión", "Deportes", "Cultura", "Ciencia", "Tecnología", "Salud", "Otras"
 ];
 
 const parser = new Parser({ timeout: 15000, headers: { "User-Agent": "Mozilla/5.0 ResumenPrensa/0.2" } });
@@ -96,7 +96,7 @@ Tareas:
    Guía: "Nacional / España" = política y actualidad del país; "Local / Madrid" = sucesos y
    actualidad de esa ciudad/comunidad; "Sociedad" = educación, medio ambiente, sucesos, tribunales;
    "Salud" = sanidad y medicina; "Ciencia" = investigación y espacio; "Tecnología" = empresas tech,
-   IA, gadgets. Usa "Otras" solo si no encaja en ninguna.
+   IA, gadgets; "Opinión" = editoriales, columnas, tribunas y análisis (no noticias). Usa "Otras" solo si no encaja.
 3. Para cada noticia da: un "titular" propio, breve y neutro; un "resumen" de 1-2 frases basado
    SOLO en los titulares (no inventes datos ni cifras que no aparezcan); "importancia" de 1 a 5
    (5 = lo más importante del día); y "fuente_ids": la lista de ids de los artículos que la forman.

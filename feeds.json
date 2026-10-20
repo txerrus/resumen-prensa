@@ -35,6 +35,13 @@
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/sociedad/portada" },
       { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/sociedad/" }
     ],
+    "Opinión": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/opinion/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/opinion.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/opinion.xml" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/opinion/" },
+      { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/opinion/" }
+    ],
     "Deportes": [
       { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada" },
       { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml" },

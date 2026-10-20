@@ -3,6 +3,7 @@
   "generado": "2026-10-20T12:22:20.684Z",
   "medios": [
     "20minutos",
+    "ABC",
     "El Mundo",
     "El País",
     "La Vanguardia",
@@ -304,6 +305,95 @@
               "medio": "elDiario.es",
               "titulo": "El primer ministro de Países Bajos anuncia que espera un hijo por gestación subrogada",
               "enlace": "https://www.eldiario.es/sociedad/primer-ministro-paises-bajos-anuncia-espera-hijo-gestacion-subrogada_1_13599778.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seccion": "Opinión",
+      "historias": [
+        {
+          "titular": "Otra dana, otro país",
+          "resumen": "Las brutales lluvias en el Mediterráneo ponen a prueba las lecciones aprendidas tras la tragedia de la dana de 2024",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El País",
+              "titulo": "Otra dana, otro país",
+              "enlace": "https://elpais.com/opinion/2026-10-20/otra-dana-otro-pais.html"
+            }
+          ]
+        },
+        {
+          "titular": "Investigación urgente en Ceuta",
+          "resumen": "Los informes médicos enviados al juzgado de guardia de la ciudad autónoma son suficientes para indagar si hubo agresiones de militares a inmigrantes",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El País",
+              "titulo": "Investigación urgente en Ceuta",
+              "enlace": "https://elpais.com/opinion/2026-10-20/investigacion-urgente-en-ceuta.html"
+            }
+          ]
+        },
+        {
+          "titular": "Duro y a la cabeza",
+          "resumen": "El Gobierno francés anuncia toques de queda en París, Lyon y otras ciudades por los disturbios del fin de semana",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "elDiario.es",
+              "titulo": "Duro y a la cabeza",
+              "enlace": "https://www.eldiario.es/opinion/duro-cabeza_131_13598648.html"
+            }
+          ]
+        },
+        {
+          "titular": "Huelga general del 11 de noviembre: ¿Hay derecho? ¿Hay razones?",
+          "resumen": "Ya ha sido registrada en el Ministerio de Trabajo la convocatoria de huelga general para el próximo 11 de noviembre de varios Sindicatos, entre ellos los más representativos a nive",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "elDiario.es",
+              "titulo": "Huelga general del 11 de noviembre: ¿Hay derecho? ¿Hay razones?",
+              "enlace": "https://www.eldiario.es/opinion/zona-critica/huelga-general-11-noviembre-hay-derecho-hay-razones_129_13598257.html"
+            }
+          ]
+        },
+        {
+          "titular": "El beso de Fuenlabrada",
+          "resumen": "¿A quién en su boda no le han ovacionado por dar un beso, exigencia de los invitados?",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "La Vanguardia",
+              "titulo": "El beso de Fuenlabrada",
+              "enlace": "https://www.lavanguardia.com/opinion/20261020/11662965/beso-fuenlabrada.html"
+            }
+          ]
+        },
+        {
+          "titular": "Orgulloso",
+          "resumen": "He escogido esta Tercera «Orgulloso» de hace cinco años, porque casi tal cual se podría volver a publicar hoy.Y es que, con la que está cayendo y la que se avecina, nos hace falta ",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "ABC",
+              "titulo": "Orgulloso",
+              "enlace": "https://www.abc.es/opinion/angel-exposito-orgulloso-20261020012052-nt.html"
+            }
+          ]
+        },
+        {
+          "titular": "Cumpleaños feliz",
+          "resumen": "De Ana Mato contaba hace años Montano que era la autora de la frase más pija de la historia de España. Leer",
+          "importancia": 2,
+          "fuentes": [
+            {
+              "medio": "El Mundo",
+              "titulo": "Cumpleaños feliz",
+              "enlace": "http://www.elmundo.es/elmundo/2013/02/03/opinion/1359913072.html"
             }
           ]
         }

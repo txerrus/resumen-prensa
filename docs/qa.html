@@ -35,7 +35,14 @@
   button{cursor:pointer;border:none;border-radius:8px;padding:10px 16px;font-weight:600;font-size:.95rem}
   .primary{background:var(--accent);color:#fff}
   .ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
-  h2.sec{border-bottom:2px solid var(--border);padding-bottom:4px;margin:22px 0 10px;font-size:1.1rem}
+  .sectabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .sectab{cursor:pointer;border:1.5px solid var(--c,var(--border));color:var(--c,var(--fg));
+    background:transparent;border-radius:999px;padding:7px 14px;font-size:.88rem;font-weight:600;
+    transition:all .12s}
+  .sectab:hover{background:var(--c,var(--border));color:#fff;opacity:.85}
+  .sectab.active{background:var(--c,var(--accent));color:#fff}
+  h2.sec{border-bottom:3px solid var(--c,var(--border));padding-bottom:4px;margin:22px 0 10px;font-size:1.1rem}
+  h2.sec .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c,var(--accent));margin-right:7px;vertical-align:middle}
   .noticia{padding:10px 0;border-bottom:1px solid var(--border)}
   .noticia:last-child{border-bottom:none}
   .titular{font-weight:600}
@@ -63,18 +70,13 @@
   <header><span style="font-size:1.6rem">📰</span><h1>Resumen de prensa</h1></header>
   <p class="sub" id="fecha">Cargando…</p>
 
+  <!-- Secciones (tarjetas de colores) -->
+  <div id="secTabs" class="sectabs"></div>
+
   <!-- Controles -->
   <div class="card">
-    <div class="row">
-      <div>
-        <label>Sección</label>
-        <select id="seccionSel"><option value="">Todas las secciones</option></select>
-      </div>
-      <div>
-        <label>Fuente principal</label>
-        <select id="fuentePrincipal"><option value="">Todas las fuentes</option></select>
-      </div>
-    </div>
+    <label>Fuente principal</label>
+    <select id="fuentePrincipal"><option value="">Todas las fuentes</option></select>
     <label class="ck" style="margin-top:8px"><input type="checkbox" id="soloFuente"> Solo noticias que cubre esa fuente</label>
   </div>
 
@@ -130,9 +132,32 @@ const PROVIDERS = {
       body:JSON.stringify({model:m,messages:[{role:"system",content:s},{role:"user",content:u}]}),parse:d=>d?.choices?.[0]?.message?.content||""})}
 };
 let DIGEST=null;
+let activeSeccion="";
 const $=id=>document.getElementById(id);
 const esc=s=>(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const stars=n=>"★".repeat(Math.max(1,Math.min(5,n||1)));
+
+// color por sección
+const COLORS={
+  "Nacional / España":"#2563eb","Internacional / Mundo":"#0ea5e9","Local / Madrid":"#7c3aed",
+  "Economía":"#059669","Sociedad":"#d97706","Opinión":"#db2777","Deportes":"#ea580c",
+  "Cultura":"#9333ea","Ciencia":"#0d9488","Tecnología":"#4f46e5","Salud":"#e11d48","Otras":"#64748b"
+};
+const PALETA=["#2563eb","#0ea5e9","#7c3aed","#059669","#d97706","#db2777","#ea580c","#9333ea","#0d9488","#4f46e5","#e11d48","#64748b"];
+function colorOf(sec,idx){return COLORS[sec]||PALETA[idx%PALETA.length];}
+
+function buildTabs(){
+  const cont=$("secTabs"); cont.innerHTML="";
+  const mk=(txt,val,color,active)=>{
+    const b=document.createElement("button");
+    b.className="sectab"+(active?" active":""); b.textContent=txt;
+    if(color) b.style.setProperty("--c",color);
+    b.onclick=()=>{activeSeccion=val; buildTabs(); render(); window.scrollTo({top:0,behavior:"smooth"});};
+    cont.appendChild(b);
+  };
+  mk("Todas","", "var(--accent)", activeSeccion==="");
+  (DIGEST.secciones||[]).forEach((s,i)=>mk(s.seccion,s.seccion,colorOf(s.seccion,i),activeSeccion===s.seccion));
+}
 
 // --- BYOK config ---
 function loadCfg(){try{const p=localStorage.getItem("rp_provider")||"anthropic";$("provider").value=p;
@@ -156,8 +181,7 @@ async function loadDigest(){
     $("fecha").textContent="Noticias de: "+(DIGEST.fecha||"hoy");
     const sel=$("fuentePrincipal");
     (DIGEST.medios||[]).forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m;sel.appendChild(o);});
-    const ss=$("seccionSel");
-    (DIGEST.secciones||[]).forEach(s=>{const o=document.createElement("option");o.value=s.seccion;o.textContent=s.seccion;ss.appendChild(o);});
+    buildTabs();
     render();
   }catch(e){ $("fecha").textContent="No se pudo cargar el resumen del día ("+url+")."; }
 }
@@ -167,15 +191,15 @@ function render(){
   if(!DIGEST?.secciones){ $("resumen").innerHTML="<div class='card'>Sin datos.</div>"; return; }
   const prim=$("fuentePrincipal").value;
   const solo=$("soloFuente").checked;
-  const secSel=$("seccionSel").value;
   const cont=$("resumen"); cont.innerHTML="";
-  for(const sec of DIGEST.secciones){
-    if(secSel && sec.seccion!==secSel) continue;
+  DIGEST.secciones.forEach((sec,i)=>{
+    if(activeSeccion && sec.seccion!==activeSeccion) return;
     let historias=sec.historias;
     if(prim && solo) historias=historias.filter(h=>h.fuentes.some(f=>f.medio===prim));
-    if(!historias.length) continue;
-    const card=document.createElement("div"); card.className="card";
-    card.innerHTML="<h2 class='sec'>"+esc(sec.seccion)+"</h2>";
+    if(!historias.length) return;
+    const color=colorOf(sec.seccion,i);
+    const card=document.createElement("div"); card.className="card"; card.style.setProperty("--c",color);
+    card.innerHTML="<h2 class='sec'><span class='dot'></span>"+esc(sec.seccion)+"</h2>";
     for(const h of historias){
       const porMedio=new Map();
       for(const f of h.fuentes) if(!porMedio.has(f.medio)) porMedio.set(f.medio,f);
@@ -189,12 +213,11 @@ function render(){
       card.appendChild(d);
     }
     cont.appendChild(card);
-  }
-  if(!cont.children.length) cont.innerHTML="<div class='card'>Ninguna noticia de esa fuente hoy.</div>";
+  });
+  if(!cont.children.length) cont.innerHTML="<div class='card'>No hay noticias para ese filtro hoy.</div>";
 }
 $("fuentePrincipal").addEventListener("change",render);
 $("soloFuente").addEventListener("change",render);
-$("seccionSel").addEventListener("change",render);
 
 // --- contexto para preguntas ---
 function contexto(){
