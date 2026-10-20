@@ -1,0 +1,45 @@
+name: Boletín diario
+
+on:
+  schedule:
+    - cron: "30 5 * * *"   # 05:30 UTC (~07:30 en España). Cámbialo si quieres otra hora.
+  workflow_dispatch: {}      # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write            # para volver a publicar docs/digest-latest.json
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: npm ci
+
+      - name: Generar el resumen del día
+        run: node digest.js --sin-correo
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
+
+      - name: Enviar a los suscriptores
+        run: node enviar.js
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SB_SECRET_KEY: ${{ secrets.SB_SECRET_KEY }}
+          MAILJET_API_KEY: ${{ secrets.MAILJET_API_KEY }}
+          MAILJET_SECRET_KEY: ${{ secrets.MAILJET_SECRET_KEY }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_NAME: "Resumen de prensa"
+
+      - name: Publicar la web actualizada
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/digest-latest.json
+          git commit -m "Actualiza noticias del día [skip ci]" || echo "sin cambios"
+          git push
