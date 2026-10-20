@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suscríbete al resumen de prensa</title>
+<style>
+  :root{--bg:#f7f6f3;--card:#fff;--fg:#1a1a1a;--muted:#6b6b6b;--accent:#c0392b;--border:#e3e1dc;--ok:#059669}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a1b;--card:#242426;--fg:#ececea;--muted:#9a9a97;--accent:#e05a4a;--border:#3a3a3d;--ok:#34d399}}
+  :root[data-theme="dark"]{--bg:#1a1a1b;--card:#242426;--fg:#ececea;--muted:#9a9a97;--accent:#e05a4a;--border:#3a3a3d;--ok:#34d399}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:620px;margin:0 auto;padding:24px 16px}
+  h1{border-bottom:3px solid var(--accent);padding-bottom:8px;font-size:1.4rem}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
+  label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
+  input[type=email],input[type=text]{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);font-size:1rem}
+  .pref{display:flex;gap:8px;margin-bottom:8px}
+  .pref input{flex:1}
+  .pref button{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:8px;padding:0 12px;cursor:pointer}
+  button.primary{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px 18px;font-weight:700;font-size:1rem;cursor:pointer;width:100%}
+  button.add{background:transparent;color:var(--accent);border:1px dashed var(--accent);border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:600}
+  .consent{display:flex;gap:9px;align-items:flex-start;font-size:.9rem;margin-top:12px}
+  .consent input{margin-top:3px}
+  .hint{font-size:.82rem;color:var(--muted)}
+  .msg{padding:12px;border-radius:8px;margin-top:12px;display:none}
+  .msg.ok{display:block;background:rgba(5,150,105,.12);border:1px solid var(--ok);color:var(--ok)}
+  .msg.err{display:block;background:rgba(192,57,43,.12);border:1px solid var(--accent);color:var(--accent)}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📰 Recibe el resumen de prensa</h1>
+  <p class="hint">Cada mañana, un resumen con las noticias importantes del día agrupadas por sección y con
+  sus fuentes. Ordenado primero por lo que a ti te interesa.</p>
+
+  <div class="card">
+    <label for="email">Tu correo electrónico</label>
+    <input id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+
+    <label style="margin-top:16px">Tus preferencias (hasta 10, lo que quieras)</label>
+    <p class="hint">Escribe cualquier tema, equipo, lugar o palabra. Ej.: «Barça de basket», «barrio de La
+    Latina, Madrid», «inteligencia artificial», «vivienda y alquiler».</p>
+    <div id="prefs"></div>
+    <button class="add" id="addPref" type="button">+ Añadir preferencia</button>
+
+    <div class="consent">
+      <input id="consent" type="checkbox">
+      <label for="consent" style="margin:0;color:var(--fg)">He leído y acepto la
+        <a href="privacidad.html" target="_blank">política de privacidad</a> y doy mi consentimiento para
+        recibir el boletín diario en mi correo. Podré darme de baja en cualquier momento.</label>
+    </div>
+
+    <button class="primary" id="submit" style="margin-top:16px">Suscribirme</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <p class="hint">Tras suscribirte te enviaremos un <strong>correo de confirmación</strong>: tendrás que
+  pulsar el enlace para activar el alta (doble verificación). Solo usamos tu correo para enviarte el boletín.</p>
+</div>
+
+<script>
+// Configura aquí la URL de la API (función de Supabase) cuando esté lista:
+window.API_BASE = ""; // p.ej. "https://XXXX.functions.supabase.co"
+
+const $=id=>document.getElementById(id);
+const prefsBox=$("prefs");
+const EJEMPLOS=["Barça de basket","barrio de La Latina (Madrid)","inteligencia artificial","vivienda y alquiler","Fórmula 1","ciencia y espacio"];
+function addPref(val=""){
+  if(prefsBox.children.length>=10) return;
+  const row=document.createElement("div"); row.className="pref";
+  const i=document.createElement("input"); i.type="text"; i.value=val;
+  i.placeholder=EJEMPLOS[prefsBox.children.length%EJEMPLOS.length];
+  const b=document.createElement("button"); b.type="button"; b.textContent="✕";
+  b.onclick=()=>{row.remove(); if(!prefsBox.children.length) addPref();};
+  row.append(i,b); prefsBox.appendChild(row);
+}
+$("addPref").onclick=()=>addPref();
+addPref(); addPref(); addPref();
+
+function show(type,text){const m=$("msg"); m.className="msg "+type; m.textContent=text;}
+
+$("submit").onclick=async()=>{
+  const email=$("email").value.trim();
+  const consent=$("consent").checked;
+  const preferencias=[...prefsBox.querySelectorAll("input")].map(i=>i.value.trim()).filter(Boolean).slice(0,10);
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show("err","Introduce un correo válido."); return; }
+  if(!consent){ show("err","Debes aceptar la política de privacidad para suscribirte."); return; }
+
+  if(!window.API_BASE){
+    show("ok","¡Gracias! El alta estará disponible muy pronto (estamos terminando de configurar el envío). Vuelve en breve.");
+    return;
+  }
+  show("ok","Enviando…");
+  try{
+    const r=await fetch(window.API_BASE+"/subscribe",{
+      method:"POST",headers:{"content-type":"application/json"},
+      body:JSON.stringify({email,preferencias,
+        consentimiento_texto:"Acepto la política de privacidad y el envío del boletín diario.",
+        pagina:location.href})
+    });
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||("Error "+r.status));
+    show("ok","¡Casi listo! Te hemos enviado un correo de confirmación. Pulsa el enlace para activar tu suscripción.");
+    $("email").value=""; $("consent").checked=false;
+  }catch(e){ show("err","No se pudo completar el alta: "+e.message); }
+};
+</script>
+</body>
+</html>
