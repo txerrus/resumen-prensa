@@ -252,7 +252,7 @@ async function preguntar(){
     const r=await fetch(cfg.url,{method:"POST",headers:b.headers,body:b.body});
     const data=await r.json();
     if(!r.ok) throw new Error(data?.error?.message||JSON.stringify(data).slice(0,200));
-    pensando.remove(); addMsg(cfg.parse(data)||"(respuesta vacía)","bot");
+    pensando.remove(); addMsg(b.parse(data)||"(respuesta vacía)","bot");
   }catch(e){ pensando.remove(); $("error").textContent="Error: "+e.message; }
 }
 $("send").onclick=preguntar;
