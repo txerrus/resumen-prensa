@@ -110,7 +110,7 @@
     </details>
     <div class="chat" id="chat"></div>
     <div class="ask">
-      <textarea id="q" placeholder="Pregunta sobre las noticias de hoy… (Ctrl+Enter para enviar)"></textarea>
+      <textarea id="q" placeholder="Pregunta sobre las noticias de hoy… (Enter para enviar · Shift+Enter salto de línea)"></textarea>
       <button class="primary" id="send">Enviar</button>
     </div>
     <label class="ck" style="margin-top:8px"><input type="checkbox" id="citar" checked> Citar las fuentes (con enlace)</label>
@@ -256,7 +256,7 @@ async function preguntar(){
   }catch(e){ pensando.remove(); $("error").textContent="Error: "+e.message; }
 }
 $("send").onclick=preguntar;
-$("q").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey))preguntar();});
+$("q").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();preguntar();}});
 
 loadCfg(); loadDigest();
 </script>
