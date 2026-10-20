@@ -63,6 +63,7 @@
 <script>
 // Configura aquí la URL de la API (función de Supabase) cuando esté lista:
 window.API_BASE = "https://juzyajcwmoqrqkzwywvh.supabase.co/functions/v1";
+window.SUPA_KEY = "sb_publishable_4NshGKI0dseyO_NqiUQw9A_abkMr_B1"; // clave PÚBLICA (sin riesgo)
 
 const $=id=>document.getElementById(id);
 const prefsBox=$("prefs");
@@ -95,7 +96,7 @@ $("submit").onclick=async()=>{
   show("ok","Enviando…");
   try{
     const r=await fetch(window.API_BASE+"/subscribe",{
-      method:"POST",headers:{"content-type":"application/json"},
+      method:"POST",headers:{"content-type":"application/json","apikey":window.SUPA_KEY,"authorization":"Bearer "+window.SUPA_KEY},
       body:JSON.stringify({email,preferencias,
         consentimiento_texto:"Acepto la política de privacidad y el envío del boletín diario.",
         pagina:location.href})
