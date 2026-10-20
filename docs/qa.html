@@ -114,6 +114,7 @@
       <button class="primary" id="send">Enviar</button>
     </div>
     <label class="ck" style="margin-top:8px"><input type="checkbox" id="citar" checked> Citar las fuentes (con enlace)</label>
+    <label class="ck" style="margin-top:6px"><input type="checkbox" id="buscarWeb"> 🔎 Buscar en la web (para dudas que no estén en las noticias)</label>
     <div class="err" id="error"></div>
   </div>
 
@@ -132,6 +133,35 @@ const PROVIDERS = {
     build:(m,s,u,k)=>({headers:{"content-type":"application/json","authorization":"Bearer "+k},
       body:JSON.stringify({model:m,messages:[{role:"system",content:s},{role:"user",content:u}]}),parse:d=>d?.choices?.[0]?.message?.content||""})}
 };
+// Variante con BÚSQUEDA WEB por proveedor
+function buildSearch(p, model, system, user, key){
+  if(p==="anthropic"){
+    return {
+      url:"https://api.anthropic.com/v1/messages",
+      headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model,max_tokens:1500,system,messages:[{role:"user",content:user}],
+        tools:[{type:"web_search_20250305",name:"web_search",max_uses:3}]}),
+      parse:d=>(d?.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("").trim()
+    };
+  }
+  if(p==="openrouter"){
+    const m=model.includes(":online")?model:model+":online";
+    return {
+      url:"https://openrouter.ai/api/v1/chat/completions",
+      headers:{"content-type":"application/json","authorization":"Bearer "+key},
+      body:JSON.stringify({model:m,messages:[{role:"system",content:system},{role:"user",content:user}]}),
+      parse:d=>d?.choices?.[0]?.message?.content||""
+    };
+  }
+  // OpenAI: Responses API con herramienta web_search
+  return {
+    url:"https://api.openai.com/v1/responses",
+    headers:{"content-type":"application/json","authorization":"Bearer "+key},
+    body:JSON.stringify({model,input:system+"\n\n"+user,tools:[{type:"web_search"}]}),
+    parse:d=>d?.output_text || (d?.output||[]).flatMap(o=>o.content||[]).filter(c=>c.type==="output_text").map(c=>c.text).join("") || ""
+  };
+}
+
 let DIGEST=null;
 let activeSeccion="";
 const $=id=>document.getElementById(id);
@@ -252,11 +282,13 @@ async function preguntar(){
   const user="NOTICIAS DE HOY (agrupadas, con fuentes y enlaces):\n\n"+contexto()+"\n\n---\nPREGUNTA: "+q;
   try{
     const cfg=PROVIDERS[p], model=$("model").value.trim()||cfg.defaultModel;
-    const b=cfg.build(model,system,user,key);
-    const r=await fetch(cfg.url,{method:"POST",headers:b.headers,body:b.body});
+    const useSearch=$("buscarWeb").checked;
+    const sys=system+(useSearch?" Tienes acceso a BÚSQUEDA WEB: úsala para datos actuales que no estén en las noticias (canales, horarios, etc.) y cita los enlaces que encuentres.":"");
+    const built=useSearch?buildSearch(p,model,sys,user,key):{url:cfg.url,...cfg.build(model,sys,user,key)};
+    const r=await fetch(built.url,{method:"POST",headers:built.headers,body:built.body});
     const data=await r.json();
     if(!r.ok) throw new Error(data?.error?.message||JSON.stringify(data).slice(0,200));
-    pensando.remove(); addMsg(b.parse(data)||"(respuesta vacía)","bot");
+    pensando.remove(); addMsg(built.parse(data)||"(respuesta vacía)","bot");
   }catch(e){ pensando.remove(); $("error").textContent="Error: "+e.message; }
 }
 $("send").onclick=preguntar;
