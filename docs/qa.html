@@ -224,8 +224,8 @@ $("soloFuente").addEventListener("change",render);
 function contexto(){
   if(!DIGEST?.secciones) return "(sin datos)";
   return DIGEST.secciones.map(sec=>"## "+sec.seccion+"\n"+sec.historias.map(h=>{
-    const f=h.fuentes.map(x=>`${x.medio}: ${x.enlace}`).join(" | ");
-    return `- ${h.titular} — ${h.resumen} (Fuentes: ${f})`;
+    const f=h.fuentes.map(x=>`${x.medio} (${x.enlace})${x.entradilla?": "+x.entradilla:""}`).join(" | ");
+    return `- ${h.titular} — ${h.resumen}\n  Fuentes: ${f}`;
   }).join("\n")).join("\n\n");
 }
 
@@ -242,9 +242,13 @@ async function preguntar(){
   addMsg(q,"user");$("q").value="";
   const pensando=addMsg("…","bot");
   const citar=$("citar").checked;
-  const system="Eres un asistente de prensa en español de España. Respondes SOLO a partir de las "+
-    "noticias y fuentes proporcionadas. Si algo no está en ellas, dilo y no inventes. "+
-    (citar?"Cita las fuentes relevantes con su enlace (URL) al final.":"No cites fuentes salvo que te lo pidan.");
+  const system="Eres un asistente de prensa en español de España, útil y conversacional. "+
+    "Usa como base las NOTICIAS DE HOY proporcionadas y apóyate en ellas. "+
+    "Si la pregunta pide un detalle que no aparece en las noticias (por ejemplo en qué canal se televisa un "+
+    "partido, horarios, contexto general), puedes aportar lo que sepas de forma general, pero DEJA CLARO que "+
+    "ese dato es información general y no proviene de las noticias de hoy (por ejemplo: 'Dato general, no del "+
+    "resumen de hoy: ...'). No inventes datos concretos de los que no estés seguro (resultados, cifras, fechas exactas). "+
+    (citar?"Cuando uses las noticias, cita las fuentes relevantes con su enlace (URL).":"No cites fuentes salvo que te lo pidan.");
   const user="NOTICIAS DE HOY (agrupadas, con fuentes y enlaces):\n\n"+contexto()+"\n\n---\nPREGUNTA: "+q;
   try{
     const cfg=PROVIDERS[p], model=$("model").value.trim()||cfg.defaultModel;

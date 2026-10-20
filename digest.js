@@ -19,9 +19,9 @@ const SOLO_POOL = args.includes("--pool") || args.includes("--solo-feeds");
 const SIN_CORREO = args.includes("--sin-correo");
 
 const HORAS_VENTANA = 28;   // noticias de las últimas N horas
-const TOP_POR_FEED = 6;     // artículos máximos por feed (menos por feed = más diversidad de medios)
-const MAX_POR_SECCION = 40; // tope por sección (asegura que todas aparecen)
-const MAX_ARTICULOS = 280;  // tope global que se manda a Claude
+const TOP_POR_FEED = 8;     // artículos máximos por feed
+const MAX_POR_SECCION = 60; // tope por sección (asegura cobertura amplia)
+const MAX_ARTICULOS = 400;  // tope global que se manda a Claude
 const SECCIONES = [
   "Nacional / España", "Internacional / Mundo", "Local / Madrid", "Economía", "Sociedad",
   "Opinión", "Deportes", "Cultura", "Ciencia", "Tecnología", "Salud", "Otras"
@@ -100,8 +100,9 @@ Tareas:
 3. Para cada noticia da: un "titular" propio, breve y neutro; un "resumen" de 1-2 frases basado
    SOLO en los titulares (no inventes datos ni cifras que no aparezcan); "importancia" de 1 a 5
    (5 = lo más importante del día); y "fuente_ids": la lista de ids de los artículos que la forman.
-4. Incluye las noticias RELEVANTES del día; agrupa o descarta lo menor. Prioriza las que varios
-   medios cubren. Ordena cada sección por importancia (mayor primero).
+4. Sé GENEROSO en cobertura: incluye MUCHAS noticias por sección (hasta ~10 por sección si las hay),
+   no solo las 3-4 principales. Incluye también noticias secundarias de interés. Prioriza las que varios
+   medios cubren y ordena cada sección por importancia (mayor primero).
 
 Devuelve SOLO JSON válido, sin texto alrededor, con esta forma exacta:
 {"secciones":[{"seccion":"Política","historias":[{"titular":"...","resumen":"...","importancia":4,"fuente_ids":[1,5]}]}]}
@@ -111,7 +112,7 @@ ARTÍCULOS:
 ${lista}`;
 
   const resp = await client.messages.create({
-    model: modelo, max_tokens: 4096,
+    model: modelo, max_tokens: 8000,
     messages: [{ role: "user", content: prompt }],
   });
   const texto = resp.content.map(b => (b.type === "text" ? b.text : "")).join("");
@@ -131,7 +132,7 @@ function construirDigest(agrupado, articulos, fechaStr) {
       const fuentes = (h.fuente_ids || [])
         .map(id => porId.get(id))
         .filter(Boolean)
-        .map(a => { mediosSet.add(a.medio); return { medio: a.medio, titulo: a.titulo, enlace: a.enlace }; });
+        .map(a => { mediosSet.add(a.medio); return { medio: a.medio, titulo: a.titulo, enlace: a.enlace, entradilla: a.resumen || "" }; });
       if (!fuentes.length) continue;
       historias.push({
         titular: limpiar(h.titular),
