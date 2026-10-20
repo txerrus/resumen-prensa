@@ -1,24 +1,46 @@
 {
-  "_comentario": "Edita libremente. Cada tema tiene una lista de feeds RSS. Añade o quita los que quieras.",
-  "temas": {
-    "Portada / General": [
-      "https://www.eldiario.es/rss/",
-      "https://www.20minutos.es/rss/"
-    ],
-    "Internacional": [
-      "https://www.eldiario.es/rss/internacional/",
-      "https://www.20minutos.es/rss/internacional/"
+  "_comentario": "Fuentes por sección. Son PISTAS: Claude reagrupa cada noticia y puede recolocar la sección. Añade o quita libremente {medio, url}.",
+  "secciones": {
+    "Política": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/politica.xml" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/politica/" },
+      { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/espana/" },
+      { "medio": "Europa Press", "url": "https://www.europapress.es/rss/rss.aspx" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/nacional/" },
+      { "medio": "El Confidencial", "url": "https://rss.elconfidencial.com/espana/" },
+      { "medio": "RTVE", "url": "https://api.rtve.es/rss/temas_noticias.xml" }
     ],
     "Economía": [
-      "https://www.eldiario.es/rss/economia/",
-      "https://www.20minutos.es/rss/economia/"
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/economia.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/economia.xml" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/economia/" },
+      { "medio": "ABC", "url": "https://www.abc.es/rss/2.0/economia/" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/economia/" }
+    ],
+    "Internacional": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/internacional.xml" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/internacional/" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/internacional/" }
+    ],
+    "Sociedad": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/sociedad/portada" },
+      { "medio": "elDiario.es", "url": "https://www.eldiario.es/rss/sociedad/" }
     ],
     "Deportes": [
-      "https://www.20minutos.es/rss/deportes/"
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/deportes/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundodeporte/rss/portada.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/deportes.xml" },
+      { "medio": "20minutos", "url": "https://www.20minutos.es/rss/deportes/" }
     ],
-    "Tecnología": [
-      "https://www.20minutos.es/rss/tecnologia/",
-      "https://www.eldiario.es/rss/tecnologia/"
+    "Cultura": [
+      { "medio": "El País", "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/cultura/portada" },
+      { "medio": "El Mundo", "url": "https://e00-elmundo.uecdn.es/elmundo/rss/cultura.xml" },
+      { "medio": "La Vanguardia", "url": "https://www.lavanguardia.com/rss/cultura.xml" }
     ]
   }
 }

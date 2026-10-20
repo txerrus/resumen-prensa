@@ -3,27 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Preguntas sobre la prensa de hoy</title>
+<title>Resumen de prensa — preguntas y fuentes</title>
 <style>
   :root{
     --bg:#f7f6f3; --card:#fff; --fg:#1a1a1a; --muted:#6b6b6b;
-    --accent:#c0392b; --border:#e3e1dc; --user:#eef3fb; --bot:#f3f1ec;
+    --accent:#c0392b; --border:#e3e1dc; --user:#eef3fb; --bot:#f3f1ec; --star:#e0a800;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#1a1a1b; --card:#242426; --fg:#ececea; --muted:#9a9a97;
-      --accent:#e05a4a; --border:#3a3a3d; --user:#243244; --bot:#2c2c2f;
+      --accent:#e05a4a; --border:#3a3a3d; --user:#243244; --bot:#2c2c2f; --star:#f0c54a;
     }
   }
   :root[data-theme="dark"]{
     --bg:#1a1a1b; --card:#242426; --fg:#ececea; --muted:#9a9a97;
-    --accent:#e05a4a; --border:#3a3a3d; --user:#243244; --bot:#2c2c2f;
+    --accent:#e05a4a; --border:#3a3a3d; --user:#243244; --bot:#2c2c2f; --star:#f0c54a;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--fg);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
-  .wrap{max-width:760px;margin:0 auto;padding:16px}
-  header{display:flex;align-items:center;gap:10px;padding:8px 0 4px}
+  .wrap{max-width:800px;margin:0 auto;padding:16px}
+  header{display:flex;align-items:center;gap:10px;padding:8px 0 2px}
   header h1{font-size:1.25rem;margin:0;border-bottom:3px solid var(--accent);padding-bottom:4px}
   .sub{color:var(--muted);font-size:.85rem;margin:2px 0 14px}
   .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px}
@@ -31,10 +31,21 @@
   select,input,textarea{width:100%;padding:9px 10px;border:1px solid var(--border);
     border-radius:8px;background:var(--bg);color:var(--fg);font-size:.95rem;font-family:inherit}
   .row{display:flex;gap:10px;flex-wrap:wrap}
-  .row>div{flex:1;min-width:140px}
+  .row>div{flex:1;min-width:150px}
   button{cursor:pointer;border:none;border-radius:8px;padding:10px 16px;font-weight:600;font-size:.95rem}
   .primary{background:var(--accent);color:#fff}
   .ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+  h2.sec{border-bottom:2px solid var(--border);padding-bottom:4px;margin:22px 0 10px;font-size:1.1rem}
+  .noticia{padding:10px 0;border-bottom:1px solid var(--border)}
+  .noticia:last-child{border-bottom:none}
+  .titular{font-weight:600}
+  .stars{color:var(--star);font-size:.85em;letter-spacing:1px}
+  .resumen{margin:3px 0;color:var(--fg)}
+  .fuentes{font-size:.85rem;color:var(--muted)}
+  .fuentes a{color:var(--accent);text-decoration:none}
+  .fuentes a.prim{font-weight:700;text-decoration:underline}
+  .ck{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--muted)}
+  .ck input{width:auto}
   .chat{display:flex;flex-direction:column;gap:10px;margin:14px 0}
   .msg{padding:10px 12px;border-radius:10px;max-width:92%;white-space:pre-wrap;word-wrap:break-word}
   .msg.user{align-self:flex-end;background:var(--user)}
@@ -42,26 +53,36 @@
   .msg.bot a{color:var(--accent)}
   .ask{display:flex;gap:8px;align-items:flex-end}
   .ask textarea{resize:vertical;min-height:46px}
-  .hint{font-size:.78rem;color:var(--muted)}
-  .pill{display:inline-block;background:var(--bot);border:1px solid var(--border);
-    border-radius:999px;padding:3px 10px;font-size:.75rem;margin:2px 4px 2px 0;cursor:pointer}
-  details summary{cursor:pointer;color:var(--muted);font-size:.85rem}
   .warn{font-size:.78rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:10px;margin-top:8px}
   .err{color:var(--accent);font-size:.85rem;margin-top:6px}
+  details summary{cursor:pointer}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <span style="font-size:1.6rem">📰</span>
-    <h1>Preguntas sobre la prensa</h1>
-  </header>
-  <p class="sub" id="fecha">Cargando resumen del día…</p>
+  <header><span style="font-size:1.6rem">📰</span><h1>Resumen de prensa</h1></header>
+  <p class="sub" id="fecha">Cargando…</p>
 
-  <!-- Configuración BYOK -->
+  <!-- Controles -->
   <div class="card">
-    <details id="cfg" open>
-      <summary><strong>Tu proveedor y clave</strong> (se guarda solo en este navegador)</summary>
+    <div class="row">
+      <div>
+        <label>Fuente principal</label>
+        <select id="fuentePrincipal"><option value="">Todas las fuentes</option></select>
+      </div>
+      <div style="display:flex;align-items:flex-end">
+        <label class="ck"><input type="checkbox" id="soloFuente"> Solo noticias que cubre esa fuente</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resumen por secciones -->
+  <div id="resumen"></div>
+
+  <!-- Preguntas (BYOK) -->
+  <div class="card">
+    <details id="cfg">
+      <summary><strong>Tu proveedor y clave</strong> (para preguntar; se guarda solo en este navegador)</summary>
       <div class="row">
         <div>
           <label>Proveedor</label>
@@ -71,10 +92,7 @@
             <option value="openrouter">OpenRouter</option>
           </select>
         </div>
-        <div>
-          <label>Modelo</label>
-          <input id="model" placeholder="modelo">
-        </div>
+        <div><label>Modelo</label><input id="model" placeholder="modelo"></div>
       </div>
       <label>Tu clave de API</label>
       <input id="apikey" type="password" placeholder="pega aquí tu clave">
@@ -82,184 +100,133 @@
         <button class="primary" id="saveKey">Guardar</button>
         <button class="ghost" id="forgetKey">Olvidar clave</button>
       </div>
-      <p class="warn">Tu clave se guarda únicamente en <em>este</em> navegador (localStorage) y las
-      preguntas se envían <strong>directamente</strong> a tu proveedor. No pasan por ningún servidor
-      de esta página. Aun así, usa esta página solo si confías en ella.</p>
+      <p class="warn">Tu clave se guarda solo en este navegador y las preguntas van directas a tu
+      proveedor; no pasan por ningún servidor de esta página.</p>
     </details>
-  </div>
-
-  <!-- Chat -->
-  <div class="card">
-    <div id="sugerencias"></div>
     <div class="chat" id="chat"></div>
     <div class="ask">
-      <textarea id="q" placeholder="Pregunta sobre las noticias de hoy… (p. ej. ¿Qué ha pasado en economía?)"></textarea>
+      <textarea id="q" placeholder="Pregunta sobre las noticias de hoy… (Ctrl+Enter para enviar)"></textarea>
       <button class="primary" id="send">Enviar</button>
     </div>
-    <label style="margin-top:8px"><input type="checkbox" id="citar" style="width:auto" checked>
-      Citar las fuentes (con enlace)</label>
+    <label class="ck" style="margin-top:8px"><input type="checkbox" id="citar" checked> Citar las fuentes (con enlace)</label>
     <div class="err" id="error"></div>
   </div>
 
-  <p class="hint">Las respuestas se basan solo en los <strong>titulares y enlaces</strong> del día.
-  Para leer un artículo completo, sigue el enlace al medio.</p>
+  <p class="sub">Noticias agrupadas a partir de titulares públicos (RSS). Sigue los enlaces para leer cada una en su medio.</p>
 </div>
 
 <script>
-// ---------- Config de proveedores ----------
 const PROVIDERS = {
-  anthropic: {
-    url: "https://api.anthropic.com/v1/messages",
-    defaultModel: "claude-sonnet-4-5",
-    build: (model, system, user, key) => ({
-      headers: { "content-type":"application/json", "x-api-key":key,
-        "anthropic-version":"2023-06-01", "anthropic-dangerous-direct-browser-access":"true" },
-      body: JSON.stringify({ model, max_tokens:1200, system, messages:[{role:"user",content:user}] }),
-      parse: d => d?.content?.map(b=>b.text||"").join("") || ""
-    })
-  },
-  openai: {
-    url: "https://api.openai.com/v1/chat/completions",
-    defaultModel: "gpt-4o-mini",
-    build: (model, system, user, key) => ({
-      headers: { "content-type":"application/json", "authorization":"Bearer "+key },
-      body: JSON.stringify({ model, messages:[{role:"system",content:system},{role:"user",content:user}] }),
-      parse: d => d?.choices?.[0]?.message?.content || ""
-    })
-  },
-  openrouter: {
-    url: "https://openrouter.ai/api/v1/chat/completions",
-    defaultModel: "openai/gpt-4o-mini",
-    build: (model, system, user, key) => ({
-      headers: { "content-type":"application/json", "authorization":"Bearer "+key },
-      body: JSON.stringify({ model, messages:[{role:"system",content:system},{role:"user",content:user}] }),
-      parse: d => d?.choices?.[0]?.message?.content || ""
-    })
-  }
+  anthropic:{url:"https://api.anthropic.com/v1/messages",defaultModel:"claude-sonnet-4-5",
+    build:(m,s,u,k)=>({headers:{"content-type":"application/json","x-api-key":k,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model:m,max_tokens:1200,system:s,messages:[{role:"user",content:u}]}),parse:d=>d?.content?.map(b=>b.text||"").join("")||""})},
+  openai:{url:"https://api.openai.com/v1/chat/completions",defaultModel:"gpt-4o-mini",
+    build:(m,s,u,k)=>({headers:{"content-type":"application/json","authorization":"Bearer "+k},
+      body:JSON.stringify({model:m,messages:[{role:"system",content:s},{role:"user",content:u}]}),parse:d=>d?.choices?.[0]?.message?.content||""})},
+  openrouter:{url:"https://openrouter.ai/api/v1/chat/completions",defaultModel:"openai/gpt-4o-mini",
+    build:(m,s,u,k)=>({headers:{"content-type":"application/json","authorization":"Bearer "+k},
+      body:JSON.stringify({model:m,messages:[{role:"system",content:s},{role:"user",content:u}]}),parse:d=>d?.choices?.[0]?.message?.content||""})}
 };
+let DIGEST=null;
+const $=id=>document.getElementById(id);
+const esc=s=>(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const stars=n=>"★".repeat(Math.max(1,Math.min(5,n||1)));
 
-// ---------- Estado ----------
-let DIGEST = null;
-const $ = id => document.getElementById(id);
+// --- BYOK config ---
+function loadCfg(){try{const p=localStorage.getItem("rp_provider")||"anthropic";$("provider").value=p;
+  $("model").value=localStorage.getItem("rp_model_"+p)||PROVIDERS[p].defaultModel;
+  $("apikey").value=localStorage.getItem("rp_key_"+p)||"";}catch(e){$("model").value=PROVIDERS.anthropic.defaultModel;}}
+$("provider").addEventListener("change",()=>{const p=$("provider").value;try{
+  $("model").value=localStorage.getItem("rp_model_"+p)||PROVIDERS[p].defaultModel;
+  $("apikey").value=localStorage.getItem("rp_key_"+p)||"";}catch(e){$("model").value=PROVIDERS[p].defaultModel;}});
+$("saveKey").onclick=()=>{const p=$("provider").value;try{localStorage.setItem("rp_provider",p);
+  localStorage.setItem("rp_model_"+p,$("model").value.trim()||PROVIDERS[p].defaultModel);
+  localStorage.setItem("rp_key_"+p,$("apikey").value.trim());$("cfg").open=false;}catch(e){alert("No se pudo guardar.");}};
+$("forgetKey").onclick=()=>{const p=$("provider").value;try{localStorage.removeItem("rp_key_"+p);}catch(e){}$("apikey").value="";};
 
-// ---------- Cargar config guardada ----------
-function loadCfg(){
-  try{
-    const p = localStorage.getItem("rp_provider") || "anthropic";
-    $("provider").value = p;
-    $("model").value = localStorage.getItem("rp_model_"+p) || PROVIDERS[p].defaultModel;
-    $("apikey").value = localStorage.getItem("rp_key_"+p) || "";
-  }catch(e){ $("model").value = PROVIDERS.anthropic.defaultModel; }
-}
-$("provider").addEventListener("change", ()=>{
-  const p = $("provider").value;
-  try{
-    $("model").value = localStorage.getItem("rp_model_"+p) || PROVIDERS[p].defaultModel;
-    $("apikey").value = localStorage.getItem("rp_key_"+p) || "";
-  }catch(e){ $("model").value = PROVIDERS[p].defaultModel; }
-});
-$("saveKey").onclick = ()=>{
-  const p = $("provider").value;
-  try{
-    localStorage.setItem("rp_provider", p);
-    localStorage.setItem("rp_model_"+p, $("model").value.trim() || PROVIDERS[p].defaultModel);
-    localStorage.setItem("rp_key_"+p, $("apikey").value.trim());
-    $("cfg").open = false;
-  }catch(e){ alert("No se pudo guardar en este navegador."); }
-};
-$("forgetKey").onclick = ()=>{
-  const p = $("provider").value;
-  try{ localStorage.removeItem("rp_key_"+p); }catch(e){}
-  $("apikey").value = "";
-};
-
-// ---------- Cargar el resumen del día ----------
+// --- cargar digest ---
 async function loadDigest(){
-  // Permite ?data=URL para apuntar a otro JSON; por defecto, el de al lado.
-  const custom = new URLSearchParams(location.search).get("data");
-  const url = custom || "digest-latest.json";
+  const custom=new URLSearchParams(location.search).get("data");
+  const url=custom||"digest-latest.json";
   try{
-    const r = await fetch(url, {cache:"no-store"});
-    if(!r.ok) throw new Error(r.status);
-    DIGEST = await r.json();
-    $("fecha").textContent = "Noticias de: " + (DIGEST.fecha || "hoy");
-    pintarSugerencias();
-  }catch(e){
-    $("fecha").textContent = "No se pudo cargar el resumen del día (" + url + ").";
-  }
-}
-function pintarSugerencias(){
-  if(!DIGEST?.temas) return;
-  const cont = $("sugerencias"); cont.innerHTML = "";
-  Object.keys(DIGEST.temas).forEach(t=>{
-    const s = document.createElement("span");
-    s.className="pill"; s.textContent="¿Qué hay de "+t.split("/")[0].trim()+"?";
-    s.onclick=()=>{ $("q").value = s.textContent; $("q").focus(); };
-    cont.appendChild(s);
-  });
+    const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(r.status);
+    DIGEST=await r.json();
+    $("fecha").textContent="Noticias de: "+(DIGEST.fecha||"hoy");
+    const sel=$("fuentePrincipal");
+    (DIGEST.medios||[]).forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m;sel.appendChild(o);});
+    render();
+  }catch(e){ $("fecha").textContent="No se pudo cargar el resumen del día ("+url+")."; }
 }
 
-// ---------- Construir el contexto (titulares + fuentes) ----------
-function contextoDelDia(){
-  if(!DIGEST?.temas) return "(sin datos del día)";
-  return Object.entries(DIGEST.temas).map(([tema, items])=>
-    "## "+tema+"\n"+items.map(i=>`- ${i.titulo} (Fuente: ${i.fuente}) ${i.enlace}`).join("\n")
-  ).join("\n\n");
-}
-
-// ---------- Enviar pregunta ----------
-function addMsg(texto, who){
-  const d = document.createElement("div");
-  d.className = "msg "+who;
-  if(who==="bot"){
-    // enlaces clicables
-    d.innerHTML = texto
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-      .replace(/(https?:\/\/[^\s)]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
-  } else { d.textContent = texto; }
-  $("chat").appendChild(d); d.scrollIntoView({behavior:"smooth",block:"end"});
-  return d;
-}
-
-async function preguntar(){
-  const q = $("q").value.trim();
-  if(!q) return;
-  const p = $("provider").value;
-  const key = $("apikey").value.trim();
-  $("error").textContent = "";
-  if(!key){ $("error").textContent="Introduce tu clave de API y pulsa Guardar."; $("cfg").open=true; return; }
-  addMsg(q, "user"); $("q").value="";
-  const pensando = addMsg("…", "bot");
-
-  const citar = $("citar").checked;
-  const system = "Eres un asistente de prensa en español de España. Respondes SOLO a partir de los "+
-    "titulares y enlaces proporcionados. Si la respuesta no está en ellos, dilo claramente y no inventes. "+
-    (citar ? "Cita las fuentes relevantes incluyendo su enlace (URL) al final de la respuesta."
-           : "No hace falta citar fuentes salvo que te lo pidan.");
-  const user = "NOTICIAS DEL DÍA (titulares + fuente + enlace):\n\n"+contextoDelDia()+
-    "\n\n---\nPREGUNTA: "+q;
-
-  try{
-    const cfg = PROVIDERS[p];
-    const model = $("model").value.trim() || cfg.defaultModel;
-    const built = cfg.build(model, system, user, key);
-    const r = await fetch(cfg.url, { method:"POST", headers:built.headers, body:built.body });
-    const data = await r.json();
-    if(!r.ok){
-      const m = data?.error?.message || JSON.stringify(data).slice(0,200);
-      throw new Error(m);
+// --- render del resumen ---
+function render(){
+  if(!DIGEST?.secciones){ $("resumen").innerHTML="<div class='card'>Sin datos.</div>"; return; }
+  const prim=$("fuentePrincipal").value;
+  const solo=$("soloFuente").checked;
+  const cont=$("resumen"); cont.innerHTML="";
+  for(const sec of DIGEST.secciones){
+    let historias=sec.historias;
+    if(prim && solo) historias=historias.filter(h=>h.fuentes.some(f=>f.medio===prim));
+    if(!historias.length) continue;
+    const card=document.createElement("div"); card.className="card";
+    card.innerHTML="<h2 class='sec'>"+esc(sec.seccion)+"</h2>";
+    for(const h of historias){
+      const porMedio=new Map();
+      for(const f of h.fuentes) if(!porMedio.has(f.medio)) porMedio.set(f.medio,f);
+      let fuentes=[...porMedio.values()];
+      if(prim) fuentes.sort((a,b)=>(a.medio===prim?-1:0)-(b.medio===prim?-1:0));
+      const links=fuentes.map(f=>`<a class="${f.medio===prim?'prim':''}" href="${f.enlace}" target="_blank" rel="noopener">${esc(f.medio)}</a>`).join(" · ");
+      const d=document.createElement("div"); d.className="noticia";
+      d.innerHTML=`<div class="titular">${esc(h.titular)} <span class="stars">${stars(h.importancia)}</span></div>
+        <div class="resumen">${esc(h.resumen)}</div>
+        <div class="fuentes">Fuentes: ${links}</div>`;
+      card.appendChild(d);
     }
-    pensando.remove();
-    addMsg(cfg.parse(data) || "(respuesta vacía)", "bot");
-  }catch(e){
-    pensando.remove();
-    $("error").textContent = "Error: "+e.message;
+    cont.appendChild(card);
   }
+  if(!cont.children.length) cont.innerHTML="<div class='card'>Ninguna noticia de esa fuente hoy.</div>";
 }
-$("send").onclick = preguntar;
-$("q").addEventListener("keydown", e=>{ if(e.key==="Enter" && (e.ctrlKey||e.metaKey)) preguntar(); });
+$("fuentePrincipal").addEventListener("change",render);
+$("soloFuente").addEventListener("change",render);
 
-// init
+// --- contexto para preguntas ---
+function contexto(){
+  if(!DIGEST?.secciones) return "(sin datos)";
+  return DIGEST.secciones.map(sec=>"## "+sec.seccion+"\n"+sec.historias.map(h=>{
+    const f=h.fuentes.map(x=>`${x.medio}: ${x.enlace}`).join(" | ");
+    return `- ${h.titular} — ${h.resumen} (Fuentes: ${f})`;
+  }).join("\n")).join("\n\n");
+}
+
+// --- chat ---
+function addMsg(t,who){const d=document.createElement("div");d.className="msg "+who;
+  if(who==="bot"){d.innerHTML=esc(t).replace(/(https?:\/\/[^\s)]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');}
+  else d.textContent=t;
+  $("chat").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});return d;}
+async function preguntar(){
+  const q=$("q").value.trim(); if(!q) return;
+  const p=$("provider").value, key=$("apikey").value.trim();
+  $("error").textContent="";
+  if(!key){$("error").textContent="Introduce tu clave de API y pulsa Guardar.";$("cfg").open=true;return;}
+  addMsg(q,"user");$("q").value="";
+  const pensando=addMsg("…","bot");
+  const citar=$("citar").checked;
+  const system="Eres un asistente de prensa en español de España. Respondes SOLO a partir de las "+
+    "noticias y fuentes proporcionadas. Si algo no está en ellas, dilo y no inventes. "+
+    (citar?"Cita las fuentes relevantes con su enlace (URL) al final.":"No cites fuentes salvo que te lo pidan.");
+  const user="NOTICIAS DE HOY (agrupadas, con fuentes y enlaces):\n\n"+contexto()+"\n\n---\nPREGUNTA: "+q;
+  try{
+    const cfg=PROVIDERS[p], model=$("model").value.trim()||cfg.defaultModel;
+    const b=cfg.build(model,system,user,key);
+    const r=await fetch(cfg.url,{method:"POST",headers:b.headers,body:b.body});
+    const data=await r.json();
+    if(!r.ok) throw new Error(data?.error?.message||JSON.stringify(data).slice(0,200));
+    pensando.remove(); addMsg(cfg.parse(data)||"(respuesta vacía)","bot");
+  }catch(e){ pensando.remove(); $("error").textContent="Error: "+e.message; }
+}
+$("send").onclick=preguntar;
+$("q").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey))preguntar();});
+
 loadCfg(); loadDigest();
 </script>
 </body>
