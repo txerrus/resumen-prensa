@@ -83,7 +83,7 @@ async function recogerArticulos(feedsConfig) {
 async function agruparConClaude(articulos) {
   const { default: Anthropic } = await import("@anthropic-ai/sdk");
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  const modelo = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
+  const modelo = process.env.ANTHROPIC_MODEL || "claude-haiku-5-5";
 
   const lista = articulos.map(a => `[${a.id}] (${a.medio} · ${a.seccionHint}) ${a.titulo}`).join("\n");
   const prompt =
