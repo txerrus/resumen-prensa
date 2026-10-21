@@ -111,13 +111,28 @@ Usa únicamente ids que existan en la lista.
 ARTÍCULOS:
 ${lista}`;
 
-  const resp = await client.messages.create({
-    model: modelo, max_tokens: 8000,
+  const peticion = {
+    model: modelo,
+    max_tokens: 16000,  // margen amplio: el JSON con muchas noticias no debe cortarse
     messages: [{ role: "user", content: prompt }],
-  });
+  };
+  // Agrupar titulares es una tarea mecánica: no necesita "pensamiento extendido".
+  // Al desactivarlo, TODO el presupuesto de tokens va al JSON (evita que se trunque)
+  // y además la llamada es más barata y rápida. Cada familia de modelo lo apaga distinto.
+  if (/sonnet-5-5/.test(modelo)) peticion.thinking = { type: "between_tools" };
+  else if (/haiku-5-5/.test(modelo)) peticion.thinking = { type: "disabled" };
+
+  const resp = await client.messages.create(peticion);
   const texto = resp.content.map(b => (b.type === "text" ? b.text : "")).join("");
-  const jsonStr = texto.slice(texto.indexOf("{"), texto.lastIndexOf("}") + 1);
-  return JSON.parse(jsonStr);
+  const ini = texto.indexOf("{");
+  const fin = texto.lastIndexOf("}");
+  const jsonStr = ini >= 0 && fin > ini ? texto.slice(ini, fin + 1) : texto;
+  try {
+    return JSON.parse(jsonStr);
+  } catch (e) {
+    throw new Error(`No se pudo leer el JSON de Claude: ${e.message}. ` +
+      `stop_reason=${resp.stop_reason}, longitud=${texto.length} caracteres.`);
+  }
 }
 
 // ---------- 3. Resolver ids -> fuentes reales ----------
