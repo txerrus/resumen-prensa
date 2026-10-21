@@ -102,6 +102,8 @@ async function main() {
   const digest = JSON.parse(await fs.readFile(path.join(__dirname, "docs", "digest-latest.json"), "utf8"));
   const subs = await getSubscribers();
   console.log(`Suscriptores activos: ${subs.length}`);
+  // Diagnóstico: qué cuenta de Mailjet se está usando (solo los primeros caracteres de la API key pública).
+  console.log(`Mailjet: API key en uso empieza por "${(MJ_KEY || "").slice(0, 6)}" | remitente SENDER_EMAIL="${SENDER}"`);
   const subject = `📰 Resumen de prensa — ${digest.fecha}`;
   let ok = 0, fail = 0;
   for (const s of subs) {
