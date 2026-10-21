@@ -1,0 +1,114 @@
+/* Estilos compartidos por todas las páginas de la web */
+:root{
+  --bg:#f7f4ee; --surface:#ffffff; --surface-2:#efebe3; --ink:#1c1a17; --ink-2:#47433c;
+  --muted:#6f6a61; --line:#e2ddd3; --accent:#b3261e; --accent-ink:#ffffff;
+  --accent-soft:rgba(179,38,30,.08); --ok:#1f7a4d; --ok-soft:rgba(31,122,77,.1);
+  --focus:#2457d6; --shadow:0 1px 2px rgba(28,26,23,.05),0 4px 16px rgba(28,26,23,.06);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --radius:12px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141312; --surface:#1d1c1a; --surface-2:#272522; --ink:#f1ede6; --ink-2:#d2ccc2;
+    --muted:#9d978d; --line:#34312c; --accent:#f0766b; --accent-ink:#1a0d0c;
+    --accent-soft:rgba(240,118,107,.12); --ok:#5fd39a; --ok-soft:rgba(95,211,154,.12);
+    --focus:#8fb0ff; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141312; --surface:#1d1c1a; --surface-2:#272522; --ink:#f1ede6; --ink-2:#d2ccc2;
+  --muted:#9d978d; --line:#34312c; --accent:#f0766b; --accent-ink:#1a0d0c;
+  --accent-soft:rgba(240,118,107,.12); --ok:#5fd39a; --ok-soft:rgba(95,211,154,.12);
+  --focus:#8fb0ff; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.contenedor{max-width:1120px;margin:0 auto;padding:0 16px}
+.contenedor.estrecho{max-width:720px}
+
+/* Barra superior */
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.marca{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--serif);
+  font-weight:700;font-size:1.2rem;letter-spacing:-.01em;white-space:nowrap}
+.marca-logo{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--accent);
+  color:var(--accent-ink);font-size:1.05rem;font-weight:700}
+.top-acciones{display:flex;align-items:center;gap:8px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;
+  border-radius:999px;padding:10px 18px;font:600 .95rem/1.2 var(--sans);cursor:pointer;text-decoration:none;
+  transition:background .15s,border-color .15s,color .15s,transform .1s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{filter:brightness(1.08)}
+.btn-linea{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-linea:hover{background:var(--surface-2)}
+.btn-texto{background:transparent;color:var(--muted);padding:8px 10px}
+.btn-texto:hover{color:var(--ink)}
+.btn-sm{padding:7px 14px;font-size:.88rem}
+.btn[disabled]{opacity:.6;cursor:default}
+.btn-icono{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;color:var(--ink);cursor:pointer}
+.btn-icono:hover{background:var(--surface-2)}
+.btn-icono svg{width:18px;height:18px}
+
+/* Formularios */
+.campo{display:block;margin:0 0 16px}
+.campo>span{display:block;font-size:.85rem;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.input,select.input,textarea.input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);color:var(--ink);font:inherit;font-size:1rem}
+.input:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 20%,transparent)}
+.input.invalido{border-color:var(--accent)}
+.ayuda{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.error-campo{font-size:.85rem;color:var(--accent);margin:6px 0 0}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--ink-2);cursor:pointer}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+.tarjeta{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.aviso{border-radius:10px;padding:12px 14px;font-size:.92rem}
+.aviso.ok{background:var(--ok-soft);color:var(--ok)}
+.aviso.err{background:var(--accent-soft);color:var(--accent)}
+
+/* Pie */
+.pie{border-top:1px solid var(--line);margin-top:56px;padding:28px 0 40px;color:var(--muted);font-size:.88rem}
+.pie-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+.pie a{color:var(--ink-2);text-decoration:none}
+.pie a:hover{text-decoration:underline}
+.pie nav{display:flex;gap:18px;flex-wrap:wrap}
+
+/* Páginas de estado (confirmado / baja) */
+.estado{max-width:520px;margin:12vh auto 0;padding:36px 28px;text-align:center}
+.estado-icono{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;
+  background:var(--ok-soft);color:var(--ok)}
+.estado-icono.mal{background:var(--accent-soft);color:var(--accent)}
+.estado-icono svg{width:30px;height:30px}
+.estado h1{font-family:var(--serif);font-size:1.7rem;line-height:1.2;margin:0 0 10px}
+.estado p{color:var(--ink-2);margin:0 0 18px}
+.estado .acciones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+@media (max-width:560px){
+  .marca{font-size:1.05rem}
+  .top-acciones .btn-sm{padding:7px 11px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.solo-movil{display:none}
+@media (max-width:560px){ .solo-ancho{display:none} .solo-movil{display:inline} }
+/* La cabecera nunca debe salirse por la derecha */
+.marca{min-width:0;overflow:hidden}
+.top-acciones{flex:none}
+@media (max-width:400px){
+  .top-in{gap:8px}
+  .marca{font-size:.98rem;gap:8px}
+  .marca-logo{width:28px;height:28px;font-size:.95rem}
+  .top-acciones{gap:6px}
+  .top-acciones .btn-sm{padding:7px 10px;font-size:.84rem}
+}

@@ -29,7 +29,12 @@ const SECCIONES = [
 
 const parser = new Parser({ timeout: 15000, headers: { "User-Agent": "Mozilla/5.0 ResumenPrensa/0.2" } });
 const log = (...a) => console.log(...a);
-const limpiar = s => (s || "").replace(/\s+/g, " ").trim();
+// Algunos RSS traen entidades o etiquetas HTML en los títulos («Barça&lt;br&gt;», «&quot;»).
+const ENTIDADES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+const decodificar = s => s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) =>
+  e[0] === "#" ? String.fromCodePoint(e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : +e.slice(1))
+               : ENTIDADES[e.toLowerCase()] ?? m);
+const limpiar = s => decodificar(decodificar(s || "")).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
 // ---------- 1. Recoger artículos de todos los feeds ----------
 async function recogerArticulos(feedsConfig) {

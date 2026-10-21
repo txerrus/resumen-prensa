@@ -3,110 +3,198 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suscríbete al resumen de prensa</title>
+<title>Suscríbete — Resumen de prensa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css?v=3">
+<script src="tema.js?v=3"></script>
 <style>
-  :root{--bg:#f7f6f3;--card:#fff;--fg:#1a1a1a;--muted:#6b6b6b;--accent:#c0392b;--border:#e3e1dc;--ok:#059669}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a1b;--card:#242426;--fg:#ececea;--muted:#9a9a97;--accent:#e05a4a;--border:#3a3a3d;--ok:#34d399}}
-  :root[data-theme="dark"]{--bg:#1a1a1b;--card:#242426;--fg:#ececea;--muted:#9a9a97;--accent:#e05a4a;--border:#3a3a3d;--ok:#34d399}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
-  .wrap{max-width:620px;margin:0 auto;padding:24px 16px}
-  h1{border-bottom:3px solid var(--accent);padding-bottom:8px;font-size:1.4rem}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
-  label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 4px}
-  input[type=email],input[type=text]{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);font-size:1rem}
-  .pref{display:flex;gap:8px;margin-bottom:8px}
-  .pref input{flex:1}
-  .pref button{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:8px;padding:0 12px;cursor:pointer}
-  button.primary{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px 18px;font-weight:700;font-size:1rem;cursor:pointer;width:100%}
-  button.add{background:transparent;color:var(--accent);border:1px dashed var(--accent);border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:600}
-  .consent{display:flex;gap:9px;align-items:flex-start;font-size:.9rem;margin-top:12px}
-  .consent input{margin-top:3px}
-  .hint{font-size:.82rem;color:var(--muted)}
-  .msg{padding:12px;border-radius:8px;margin-top:12px;display:none}
-  .msg.ok{display:block;background:rgba(5,150,105,.12);border:1px solid var(--ok);color:var(--ok)}
-  .msg.err{display:block;background:rgba(192,57,43,.12);border:1px solid var(--accent);color:var(--accent)}
-  a{color:var(--accent)}
+  .alta{display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:start;padding-top:48px}
+  .gancho .antetitulo{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  .gancho h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 14px}
+  .gancho .entrada{font-size:1.1rem;color:var(--ink-2);margin:0 0 28px}
+  .ventajas{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+  .ventajas li{display:flex;gap:14px}
+  .ventajas .ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--accent-soft);color:var(--accent)}
+  .ventajas .ic svg{width:19px;height:19px}
+  .ventajas strong{display:block}
+  .ventajas span{color:var(--muted);font-size:.93rem}
+
+  .form{padding:26px}
+  .form h2{font-family:var(--serif);font-size:1.35rem;margin:0 0 18px}
+  .prefs-caja{display:flex;flex-wrap:wrap;gap:6px;padding:7px;border:1px solid var(--line);border-radius:10px;background:var(--surface);cursor:text;min-height:48px}
+  .prefs-caja:focus-within{border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 20%,transparent)}
+  .pref{display:inline-flex;align-items:center;gap:4px;background:var(--surface-2);border-radius:999px;padding:5px 6px 5px 12px;font-size:.9rem}
+  .pref button{display:grid;place-items:center;width:22px;height:22px;border:none;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer;font-size:15px;line-height:1}
+  .pref button:hover{background:var(--line);color:var(--ink)}
+  .prefs-caja input{flex:1;min-width:140px;border:none;outline:none;background:transparent;color:var(--ink);font:inherit;padding:5px 6px}
+  .prefs-info{display:flex;justify-content:space-between;gap:10px}
+  .ideas{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .ideas button{border:1px dashed var(--line);background:transparent;color:var(--ink-2);border-radius:999px;padding:5px 11px;font:inherit;font-size:.85rem;cursor:pointer}
+  .ideas button:hover{border-color:var(--accent);color:var(--accent)}
+  .form .btn-accent{width:100%;padding:14px;font-size:1rem;margin-top:18px}
+  .letra-pequena{font-size:.82rem;color:var(--muted);margin:14px 0 0;text-align:center}
+  .hecho{text-align:center;padding:12px 4px}
+  .hecho .estado-icono{margin-bottom:14px}
+  .hecho h2{margin-bottom:8px}
+  .hecho p{color:var(--ink-2);margin:0 0 8px}
+  .giro{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .7s linear infinite}
+  @keyframes giro{to{transform:rotate(360deg)}}
+
+  @media (max-width:900px){ .alta{grid-template-columns:1fr;gap:32px;padding-top:28px} }
+  @media (max-width:560px){ .form{padding:20px 16px} }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>📰 Recibe el resumen de prensa</h1>
-  <p class="hint">Cada mañana, un resumen con las noticias importantes del día agrupadas por sección y con
-  sus fuentes. Ordenado primero por lo que a ti te interesa.</p>
-
-  <div class="card">
-    <label for="email">Tu correo electrónico</label>
-    <input id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
-
-    <label style="margin-top:16px">Tus preferencias (hasta 10, lo que quieras)</label>
-    <p class="hint">Escribe cualquier tema, equipo, lugar o palabra. Ej.: «Barça de basket», «barrio de La
-    Latina, Madrid», «inteligencia artificial», «vivienda y alquiler».</p>
-    <div id="prefs"></div>
-    <button class="add" id="addPref" type="button">+ Añadir preferencia</button>
-
-    <div class="consent">
-      <input id="consent" type="checkbox">
-      <label for="consent" style="margin:0;color:var(--fg)">He leído y acepto la
-        <a href="privacidad.html" target="_blank">política de privacidad</a> y doy mi consentimiento para
-        recibir el boletín diario en mi correo. Podré darme de baja en cualquier momento.</label>
+<header class="top">
+  <div class="contenedor top-in">
+    <a class="marca" href="index.html"><span class="marca-logo">R</span>Resumen de prensa</a>
+    <div class="top-acciones">
+      <a class="btn btn-linea btn-sm" href="index.html"><span class="solo-ancho">Ver las noticias</span><span class="solo-movil">Noticias</span></a>
+      <button class="btn-icono" data-tema type="button"></button>
     </div>
-
-    <button class="primary" id="submit" style="margin-top:16px">Suscribirme</button>
-    <div class="msg" id="msg"></div>
   </div>
+</header>
 
-  <p class="hint">Tras suscribirte te enviaremos un <strong>correo de confirmación</strong>: tendrás que
-  pulsar el enlace para activar el alta (doble verificación). Solo usamos tu correo para enviarte el boletín.</p>
-</div>
+<main class="contenedor alta">
+  <section class="gancho">
+    <p class="antetitulo">Boletín diario · gratis</p>
+    <h1>La prensa del día, en tu correo antes del café</h1>
+    <p class="entrada">Cada mañana, las noticias importantes de más de veinte medios, agrupadas por tema y con enlace a cada fuente.</p>
+    <ul class="ventajas">
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21l1.4-7L2 9.3l7-.8z"/></svg></span>
+        <div><strong>Primero lo tuyo</strong><span>Lo que coincide con tus temas aparece arriba, en «Para ti».</span></div></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+        <div><strong>Varios medios, una noticia</strong><span>Cada hecho, con los enlaces de todos los medios que lo cuentan.</span></div></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <div><strong>Solo tu correo</strong><span>No pedimos nada más. Te das de baja con un clic y se borran tus datos.</span></div></li>
+    </ul>
+  </section>
+
+  <section class="tarjeta form" id="caja">
+    <form id="form" novalidate>
+      <h2>Suscríbete</h2>
+      <label class="campo"><span>Tu correo electrónico</span>
+        <input class="input" id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+        <p class="error-campo" id="errEmail" hidden>Escribe un correo válido.</p>
+      </label>
+
+      <div class="campo">
+        <span id="prefsEtiqueta">Tus temas <span style="font-weight:400;color:var(--muted)">(opcional)</span></span>
+        <div class="prefs-caja" id="prefsCaja">
+          <input id="prefInput" type="text" aria-labelledby="prefsEtiqueta" placeholder="Escribe un tema y pulsa Enter" autocomplete="off">
+        </div>
+        <div class="prefs-info">
+          <p class="ayuda">Equipos, lugares, personas… lo que quieras.</p>
+          <p class="ayuda" id="contador">0/10</p>
+        </div>
+        <div class="ideas" id="ideas" aria-label="Ideas de temas"></div>
+      </div>
+
+      <label class="check" for="consent">
+        <input id="consent" type="checkbox">
+        <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a> y quiero recibir el boletín diario.</span>
+      </label>
+      <p class="error-campo" id="errConsent" hidden>Para suscribirte tienes que aceptar la política de privacidad.</p>
+
+      <button class="btn btn-accent" id="submit" type="submit">Suscribirme</button>
+      <div class="aviso err" id="errEnvio" hidden style="margin-top:12px"></div>
+      <p class="letra-pequena">Te enviaremos un correo para confirmar la suscripción.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie-in">
+    <span>Resumen de prensa a partir de titulares públicos (RSS).</span>
+    <nav><a href="index.html">Noticias</a><a href="privacidad.html">Privacidad</a></nav>
+  </div>
+</footer>
 
 <script>
-// Configura aquí la URL de la API (función de Supabase) cuando esté lista:
+// URL de la API (función de Supabase) y clave PÚBLICA del proyecto (sin riesgo).
 window.API_BASE = "https://juzyajcwmoqrqkzwywvh.supabase.co/functions/v1";
-window.SUPA_KEY = "sb_publishable_4NshGKI0dseyO_NqiUQw9A_abkMr_B1"; // clave PÚBLICA (sin riesgo)
+window.SUPA_KEY = "sb_publishable_4NshGKI0dseyO_NqiUQw9A_abkMr_B1";
 
 const $=id=>document.getElementById(id);
-const prefsBox=$("prefs");
-const EJEMPLOS=["Barça de basket","barrio de La Latina (Madrid)","inteligencia artificial","vivienda y alquiler","Fórmula 1","ciencia y espacio"];
-function addPref(val=""){
-  if(prefsBox.children.length>=10) return;
-  const row=document.createElement("div"); row.className="pref";
-  const i=document.createElement("input"); i.type="text"; i.value=val;
-  i.placeholder=EJEMPLOS[prefsBox.children.length%EJEMPLOS.length];
-  const b=document.createElement("button"); b.type="button"; b.textContent="✕";
-  b.onclick=()=>{row.remove(); if(!prefsBox.children.length) addPref();};
-  row.append(i,b); prefsBox.appendChild(row);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const MAX=10;
+const IDEAS=["Real Madrid","Barça de basket","Madrid","inteligencia artificial","vivienda y alquiler","Fórmula 1","cambio climático","Bolsa e IBEX"];
+let prefs=[];
+
+function pintarPrefs(){
+  const caja=$("prefsCaja"), input=$("prefInput");
+  caja.querySelectorAll(".pref").forEach(e=>e.remove());
+  prefs.forEach((p,i)=>{
+    const c=document.createElement("span"); c.className="pref";
+    c.innerHTML=`${esc(p)}<button type="button" aria-label="Quitar ${esc(p)}" data-i="${i}">×</button>`;
+    caja.insertBefore(c,input);
+  });
+  $("contador").textContent=`${prefs.length}/${MAX}`;
+  input.disabled=prefs.length>=MAX;
+  input.placeholder=prefs.length>=MAX?"Has llegado al máximo":prefs.length?"Añade otro tema…":"Escribe un tema y pulsa Enter";
+  const usadas=new Set(prefs.map(p=>p.toLowerCase()));
+  $("ideas").innerHTML=prefs.length>=MAX?"":IDEAS.filter(x=>!usadas.has(x.toLowerCase())).slice(0,5)
+    .map(x=>`<button type="button">+ ${esc(x)}</button>`).join("");
 }
-$("addPref").onclick=()=>addPref();
-addPref(); addPref(); addPref();
+function anadir(txt){
+  txt=String(txt).trim().replace(/\s+/g," ").slice(0,80);
+  if(!txt||prefs.length>=MAX||prefs.some(p=>p.toLowerCase()===txt.toLowerCase())) return;
+  prefs.push(txt); pintarPrefs();
+}
+$("prefsCaja").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-i]");
+  if(b){ prefs.splice(+b.dataset.i,1); pintarPrefs(); }
+  $("prefInput").focus();
+});
+$("prefInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"||e.key===","){ e.preventDefault(); anadir(e.target.value); e.target.value=""; }
+  else if(e.key==="Backspace"&&!e.target.value&&prefs.length){ prefs.pop(); pintarPrefs(); }
+});
+$("prefInput").addEventListener("blur",e=>{ if(e.target.value.trim()){ anadir(e.target.value); e.target.value=""; } });
+$("ideas").addEventListener("click",e=>{ const b=e.target.closest("button"); if(b) anadir(b.textContent.replace(/^\+\s*/,"")); });
+pintarPrefs();
 
-function show(type,text){const m=$("msg"); m.className="msg "+type; m.textContent=text;}
+const correoOk=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+$("email").addEventListener("blur",()=>{ const v=$("email").value.trim(); const mal=v&&!correoOk(v); $("errEmail").hidden=!mal; $("email").classList.toggle("invalido",!!mal); });
+$("email").addEventListener("input",()=>{ if(correoOk($("email").value.trim())){ $("errEmail").hidden=true; $("email").classList.remove("invalido"); } });
+$("consent").addEventListener("change",()=>{ if($("consent").checked) $("errConsent").hidden=true; });
 
-$("submit").onclick=async()=>{
+$("form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if($("prefInput").value.trim()){ anadir($("prefInput").value); $("prefInput").value=""; }
   const email=$("email").value.trim();
-  const consent=$("consent").checked;
-  const preferencias=[...prefsBox.querySelectorAll("input")].map(i=>i.value.trim()).filter(Boolean).slice(0,10);
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show("err","Introduce un correo válido."); return; }
-  if(!consent){ show("err","Debes aceptar la política de privacidad para suscribirte."); return; }
+  let mal=false;
+  if(!correoOk(email)){ $("errEmail").hidden=false; $("email").classList.add("invalido"); mal=true; }
+  if(!$("consent").checked){ $("errConsent").hidden=false; mal=true; }
+  if(mal){ (correoOk(email)?$("consent"):$("email")).focus(); return; }
 
-  if(!window.API_BASE){
-    show("ok","¡Gracias! El alta estará disponible muy pronto (estamos terminando de configurar el envío). Vuelve en breve.");
-    return;
-  }
-  show("ok","Enviando…");
+  const btn=$("submit"); btn.disabled=true; btn.innerHTML='<span class="giro"></span> Enviando…';
+  $("errEnvio").hidden=true;
   try{
     const r=await fetch(window.API_BASE+"/subscribe",{
       method:"POST",headers:{"content-type":"application/json","apikey":window.SUPA_KEY,"authorization":"Bearer "+window.SUPA_KEY},
-      body:JSON.stringify({email,preferencias,
+      body:JSON.stringify({email,preferencias:prefs,
         consentimiento_texto:"Acepto la política de privacidad y el envío del boletín diario.",
         pagina:location.href})
     });
     const d=await r.json().catch(()=>({}));
     if(!r.ok) throw new Error(d.error||("Error "+r.status));
-    show("ok","¡Casi listo! Te hemos enviado un correo de confirmación. Pulsa el enlace para activar tu suscripción.");
-    $("email").value=""; $("consent").checked=false;
-  }catch(e){ show("err","No se pudo completar el alta: "+e.message); }
-};
+    const ya=/ya estabas/i.test(d.message||"");
+    $("caja").innerHTML=`<div class="hecho">
+      <div class="estado-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ya?'<path d="M20 6 9 17l-5-5"/>':'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'}</svg></div>
+      <h2>${ya?"Ya estabas suscrito":"Revisa tu correo"}</h2>
+      <p>${ya?`Seguirás recibiendo el resumen en <strong>${esc(email)}</strong>.`:`Te hemos enviado un enlace a <strong>${esc(email)}</strong>. Púlsalo para activar la suscripción.`}</p>
+      ${ya?"":'<p class="ayuda">¿No lo ves? Mira en la carpeta de spam o promociones.</p>'}
+      <p style="margin-top:18px"><a class="btn btn-linea" href="index.html">Ver las noticias de hoy</a></p></div>`;
+  }catch(err){
+    $("errEnvio").hidden=false;
+    $("errEnvio").textContent="No se pudo completar el alta: "+(err.message==="Failed to fetch"?"no hay conexión con el servidor. Inténtalo de nuevo.":err.message);
+    btn.disabled=false; btn.textContent="Suscribirme";
+  }
+});
 </script>
 </body>
 </html>
