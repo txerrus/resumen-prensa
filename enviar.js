@@ -86,7 +86,16 @@ async function sendOne(to, subject, html, unsubUrl) {
       Headers: { "List-Unsubscribe": `<${unsubUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" },
     }] }),
   });
-  if (!r.ok) throw new Error("Mailjet " + to + ": " + (await r.text()).slice(0, 200));
+  const cuerpo = await r.text();
+  if (!r.ok) throw new Error("Mailjet " + to + " (HTTP " + r.status + "): " + cuerpo.slice(0, 300));
+  // Mailjet v3.1 puede responder 200 con un estado de error por mensaje; lo comprobamos de verdad.
+  let datos = null;
+  try { datos = JSON.parse(cuerpo); } catch {}
+  const msg = datos && datos.Messages && datos.Messages[0];
+  console.log(`   Mailjet -> ${to}: Status=${msg ? msg.Status : "?"} | ${JSON.stringify(msg || cuerpo).slice(0, 400)}`);
+  if (msg && msg.Status && msg.Status !== "success") {
+    throw new Error("Mailjet estado no exitoso para " + to + ": " + cuerpo.slice(0, 300));
+  }
 }
 
 async function main() {
