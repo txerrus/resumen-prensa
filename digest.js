@@ -241,4 +241,6 @@ async function main() {
   log("Listo ✔");
 }
 
-main().catch(e => { console.error("ERROR:", e.message); process.exit(1); });
+main()
+  .then(() => process.exit(0))  // cierra conexiones pendientes (IA/RSS) para que el paso termine
+  .catch(e => { console.error("ERROR:", e.message); process.exit(1); });
