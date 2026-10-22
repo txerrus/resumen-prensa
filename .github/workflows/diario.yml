@@ -2,14 +2,44 @@ name: Boletín diario
 
 on:
   schedule:
-    - cron: "30 5 * * *"   # 05:30 UTC (~07:30 en España). Cámbialo si quieres otra hora.
+    # GitHub solo admite UTC. Las 09:30 en España son 07:30 UTC en horario de verano
+    # y 08:30 UTC en horario de invierno: se programan las dos y el job "hora" deja
+    # pasar solo la que toca según la hora oficial de Madrid.
+    - cron: "30 7 * * *"
+    - cron: "30 8 * * *"
   workflow_dispatch: {}      # permite lanzarlo a mano desde la pestaña Actions
 
 permissions:
   contents: write            # para volver a publicar docs/digest-latest.json
 
 jobs:
+  hora:
+    runs-on: ubuntu-latest
+    outputs:
+      toca: ${{ steps.comprobar.outputs.toca }}
+    steps:
+      - id: comprobar
+        env:
+          EVENTO: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+        run: |
+          # Desfase actual de Madrid: +0200 (verano) o +0100 (invierno)
+          desfase=$(TZ=Europe/Madrid date +%z)
+          if [ "$EVENTO" != "schedule" ]; then
+            toca=true
+          elif [ "$desfase" = "+0200" ] && [ "$CRON" = "30 7 * * *" ]; then
+            toca=true
+          elif [ "$desfase" = "+0100" ] && [ "$CRON" = "30 8 * * *" ]; then
+            toca=true
+          else
+            toca=false
+          fi
+          echo "Evento=$EVENTO cron=\"$CRON\" desfase Madrid=$desfase -> toca=$toca"
+          echo "toca=$toca" >> "$GITHUB_OUTPUT"
+
   enviar:
+    needs: hora
+    if: needs.hora.outputs.toca == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

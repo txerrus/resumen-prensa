@@ -20,7 +20,7 @@ No hay lint, tests ni build. `npm run feeds` es la comprobación de integración
 
 ## Arquitectura
 
-Flujo diario (`.github/workflows/diario.yml`, cron 05:30 UTC + `workflow_dispatch`):
+Flujo diario (`.github/workflows/diario.yml`, 09:30 hora de Madrid: crons 07:30 y 08:30 UTC filtrados por el job `hora` según verano/invierno, + `workflow_dispatch`):
 
 1. **`digest.js --sin-correo`** — recoge RSS de `feeds.json` (ventana de 28 h, topes por feed/sección/global definidos al principio del archivo), deduplica y manda a Claude **una sola llamada** con la lista numerada de titulares. Claude devuelve JSON `{secciones:[{seccion, historias:[{titular, resumen, importancia, fuente_ids}]}]}`; `construirDigest` resuelve los `fuente_ids` a fuentes reales y descarta historias sin fuentes válidas. Escribe `output/` (ignorado por git) y `docs/digest-latest.json`.
 2. **`enviar.js`** — lee `docs/digest-latest.json`, pide a la REST de Supabase los suscriptores con `estado=activo`, añade un bloque "Para ti" por coincidencia de palabras clave con sus `preferencias` (sin llamadas a Claude) y envía un correo por suscriptor vía Mailjet v3.1 con enlace y cabeceras `List-Unsubscribe`.
