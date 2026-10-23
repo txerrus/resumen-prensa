@@ -98,8 +98,20 @@ async function sendOne(to, subject, html, unsubUrl) {
   }
 }
 
+// Vista previa: genera el correo en output/ sin tocar Supabase ni Mailjet.
+// Uso: node enviar.js --vista-previa [--prefs "economía, Ceuta"]
+async function vistaPrevia(digest) {
+  const i = process.argv.indexOf("--prefs");
+  const prefs = i > -1 && process.argv[i + 1] ? process.argv[i + 1].split(",").map((s) => s.trim()).filter(Boolean) : [];
+  const dir = path.join(__dirname, "output");
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(path.join(dir, "correo.html"), emailHtml(digest, prefs, "TOKEN-DE-PRUEBA"), "utf8");
+  console.log(`Vista previa en output/correo.html (preferencias: ${prefs.join(" | ") || "ninguna"})`);
+}
+
 async function main() {
   const digest = JSON.parse(await fs.readFile(path.join(__dirname, "docs", "digest-latest.json"), "utf8"));
+  if (process.argv.includes("--vista-previa")) return vistaPrevia(digest);
   const subs = await getSubscribers();
   console.log(`Suscriptores activos: ${subs.length}`);
   // Diagnóstico: qué cuenta de Mailjet se está usando (solo los primeros caracteres de la API key pública).
