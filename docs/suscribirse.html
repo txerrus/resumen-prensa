@@ -80,6 +80,10 @@
         <input class="input" id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
         <p class="error-campo" id="errEmail" hidden>Escribe un correo válido.</p>
       </label>
+      <!-- Trampa para robots: invisible para las personas; si llega rellena, el alta se ignora. -->
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+        <label>No rellenes este campo <input id="web" type="text" tabindex="-1" autocomplete="off"></label>
+      </div>
 
       <div class="campo">
         <span id="prefsEtiqueta">Tus temas <span style="font-weight:400;color:var(--muted)">(opcional)</span></span>
@@ -178,7 +182,7 @@ $("form").addEventListener("submit",async e=>{
       method:"POST",headers:{"content-type":"application/json","apikey":window.SUPA_KEY,"authorization":"Bearer "+window.SUPA_KEY},
       body:JSON.stringify({email,preferencias:prefs,
         consentimiento_texto:"Acepto la política de privacidad y el envío del boletín diario.",
-        pagina:location.href})
+        pagina:location.href,web:$("web").value})
     });
     const d=await r.json().catch(()=>({}));
     if(!r.ok) throw new Error(d.error||("Error "+r.status));
