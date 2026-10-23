@@ -10,9 +10,9 @@
 - Vista previa sin enviar nada: `node enviar.js --vista-previa [--prefs "tema1, tema2"] [--digest ruta.json]` → `output/correo.html` y `output/correo.txt`.
 - Commits: `7230b50` (vista previa) y `034ccd4` (rediseño).
 
-**A medias:** nada. Falta ver el correo real que llegue mañana en Outlook y Gmail (móvil y escritorio).
+**A medias:** los commits están solo en local, **sin subir a GitHub**. Hasta hacer `git push`, el envío diario sigue usando el correo antiguo.
 
-**Siguiente paso concreto:** revisar el correo de mañana y ajustar si hace falta (los números están al principio de `enviar.js`: `ESENCIALES`, `PARA_TI`, `POR_SECCION`, `FUENTES_MAX`).
+**Siguiente paso concreto:** hacer `git push` (cambia lo que reciben los suscriptores al día siguiente). Después, revisar el correo real en Outlook y Gmail, en el móvil y en el escritorio, y ajustar si hace falta (los números están al principio de `enviar.js`: `ESENCIALES`, `PARA_TI`, `POR_SECCION`, `FUENTES_MAX`).
 
 **Dudas y tareas abiertas:**
 1. **Remitente `@gmail.com` enviado por Mailjet** → aviso «el remitente real es diferente» y riesgo de spam (falla DMARC). Solución: dominio propio (~10 €/año) verificado en Mailjet. Pendiente de decidir.
