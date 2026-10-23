@@ -9,3 +9,10 @@
 - **Sin estrellas.** Se ha sustituido por la etiqueta «Destacado» (importancia 4–5). El titular enlaza al primer medio. Cada medio sale una sola vez.
 - **Maquetación con tablas y estilos en línea**, más `<style>` solo para el modo oscuro y el móvil (si un cliente lo ignora, el correo sigue viéndose bien). *Por qué:* Outlook de escritorio pinta el HTML con el motor de Word.
 - **Notas del proyecto en `notas/`, no en `docs/`**, porque `docs/` es la web publicada en GitHub Pages.
+
+## 23/10/2026 — Revisión técnica
+
+- **Tamaño máximo del correo (95 KB).** Gmail recorta los correos de más de 102 KB y esconde el final, que es donde está el enlace de baja. `construirCorreo` reduce las noticias por sección hasta que el correo quepa, y el texto plano usa la misma cifra.
+- **Baja y confirmación en dos pasos**: abrir el enlace solo enseña una página con un botón; la acción se hace al pulsarlo (POST). *Por qué:* los escáneres de enlaces (Outlook, antivirus) abren los enlaces solos. Se mantiene el «darse de baja en un clic» de Gmail y Outlook (RFC 8058). *Descartado:* enlazar el correo directamente a `baja.html`; el enlace sigue apuntando a la función, para que los correos ya enviados sigan funcionando.
+- **Anti-abuso sin servicios externos**: campo trampa + límites contando filas en la propia tabla (5 por IP y hora, 30 pendientes por hora, sin reenvío en 10 min). *Descartado por ahora:* un captcha (Cloudflare Turnstile), que exige otra cuenta y añade fricción; se puede añadir si llega abuso real.
+- **RLS activado sin reglas**: la web nunca lee la tabla directamente (todo pasa por las funciones con la clave secreta), así que no hace falta ninguna regla de acceso público.

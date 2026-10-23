@@ -66,7 +66,7 @@ function paraTi(todas, prefs) {
 }
 
 // Decide qué va en el correo. Lo comparten la versión HTML y la de texto plano.
-function prepararCorreo(digest, prefs) {
+function prepararCorreo(digest, prefs, porSeccion = POR_SECCION) {
   const todas = [];
   for (const sec of digest.secciones || []) for (const h of sec.historias || []) todas.push({ ...h, _sec: sec.seccion, _i: todas.length });
   const esenciales = [...todas].sort(porImportancia).slice(0, ESENCIALES);
@@ -79,7 +79,7 @@ function prepararCorreo(digest, prefs) {
       return {
         nombre: sec.seccion,
         total: delaSec.length,
-        historias: delaSec.filter((h) => !usadas.has(h._i)).sort(porImportancia).slice(0, POR_SECCION),
+        historias: delaSec.filter((h) => !usadas.has(h._i)).sort(porImportancia).slice(0, porSeccion),
       };
     })
     .filter((s) => s.total > 0);
@@ -95,8 +95,8 @@ function prepararCorreo(digest, prefs) {
 
 // ---------- Versión HTML ----------
 // Tablas y estilos en línea: es lo único que Outlook (motor de Word) pinta bien.
-function emailHtml(digest, prefs, token) {
-  const m = prepararCorreo(digest, prefs);
+function emailHtml(digest, prefs, token, porSeccion = POR_SECCION) {
+  const m = prepararCorreo(digest, prefs, porSeccion);
   const unsub = `${SB_URL}/functions/v1/unsubscribe?token=${encodeURIComponent(token)}`;
 
   const historia = (h, { conSeccion }) => {
@@ -136,7 +136,7 @@ function emailHtml(digest, prefs, token) {
     ),
   ].join("");
 
-  return `<!doctype html>
+  const html = `<!doctype html>
 <html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
@@ -175,12 +175,27 @@ function emailHtml(digest, prefs, token) {
 </td></tr>
 </table>
 </body></html>`;
+  // Gmail recorta los correos de más de 102 KB (y con ellos el enlace de baja): quitamos la sangría.
+  return html.replace(/\n\s+/g, "\n");
+}
+
+// Gmail recorta los correos de más de 102 KB y oculta el final (con el enlace de baja).
+// Si el HTML se pasa de este límite, se enseñan menos noticias por sección hasta que quepa.
+const MAX_BYTES = 95_000;
+function construirCorreo(digest, prefs, token) {
+  let porSeccion = POR_SECCION;
+  let html = emailHtml(digest, prefs, token, porSeccion);
+  while (Buffer.byteLength(html) > MAX_BYTES && porSeccion > 1) {
+    porSeccion--;
+    html = emailHtml(digest, prefs, token, porSeccion);
+  }
+  return { html, texto: emailTexto(digest, prefs, token, porSeccion), porSeccion };
 }
 
 // ---------- Versión en texto plano ----------
 // Va siempre en el mismo correo que el HTML; el programa de correo elige cuál mostrar.
-function emailTexto(digest, prefs, token) {
-  const m = prepararCorreo(digest, prefs);
+function emailTexto(digest, prefs, token, porSeccion = POR_SECCION) {
+  const m = prepararCorreo(digest, prefs, porSeccion);
   const unsub = `${SB_URL}/functions/v1/unsubscribe?token=${encodeURIComponent(token)}`;
   const raya = "=".repeat(40);
   const historia = (h, n, conSeccion) => {
@@ -248,9 +263,11 @@ async function vistaPrevia(digest) {
   const prefs = i > -1 && process.argv[i + 1] ? process.argv[i + 1].split(",").map((s) => s.trim()).filter(Boolean) : [];
   const dir = path.join(__dirname, "output");
   await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, "correo.html"), emailHtml(digest, prefs, "TOKEN-DE-PRUEBA"), "utf8");
-  await fs.writeFile(path.join(dir, "correo.txt"), emailTexto(digest, prefs, "TOKEN-DE-PRUEBA"), "utf8");
+  const c = construirCorreo(digest, prefs, "TOKEN-DE-PRUEBA");
+  await fs.writeFile(path.join(dir, "correo.html"), c.html, "utf8");
+  await fs.writeFile(path.join(dir, "correo.txt"), c.texto, "utf8");
   console.log(`Vista previa en output/correo.html y output/correo.txt (preferencias: ${prefs.join(" | ") || "ninguna"})`);
+  console.log(`Tamaño HTML: ${Math.round(Buffer.byteLength(c.html) / 1024)} KB · ${c.porSeccion} noticias por sección`);
 }
 
 async function main() {
@@ -266,8 +283,8 @@ async function main() {
   let ok = 0, fail = 0;
   for (const s of subs) {
     try {
-      const html = emailHtml(digest, s.preferencias || [], s.token);
-      await sendOne(s.email, subject, html, emailTexto(digest, s.preferencias || [], s.token),`${SB_URL}/functions/v1/unsubscribe?token=${s.token}`);
+      const c = construirCorreo(digest, s.preferencias || [], s.token);
+      await sendOne(s.email, subject, c.html, c.texto, `${SB_URL}/functions/v1/unsubscribe?token=${s.token}`);
       ok++;
     } catch (e) {
       console.error("Fallo:", s.email, e.message); fail++;
